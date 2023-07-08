@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Detailed project description for UART and VGA communications on DE10-Lite FPGA">
+    <meta name="author" content="Your Name">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <title>Computer Hardware Design Final Project</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+
+    <!-- Custom styles for this template -->
+    <style>
+      .project-description {
+        font-size: 18px;
+        line-height: 1.6;
+      }
+      .circuit-image {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-4 text-center">Computer Hardware Design Final Project</h1>
+        </div>
+        <div class="col-12 mt-4">
+            <p class="project-description">
+                This project involved developing and implementing UART and VGA communications on a DE10-Lite FPGA board. By using a memory buffer to store and output video data, the system was able to effectively handle and display the communication data.
+            </p>
+        </div>
+        <!-- UART section -->
+        <div class="col-12 mt-5">
+            <h2>UART Communications</h2>
+            <p class="project-description">
+                The first step of the project was to establish a UART (Universal Asynchronous Receiver-Transmitter) communication protocol on the DE10-Lite FPGA board. This enabled the system to transmit and receive serial data.
+            </p>
+            <img src="assets/img/uart_circuit.png" alt="UART Circuit" class="circuit-image">
+        </div>
+        <!-- VGA section -->
+        <div class="col-12 mt-5">
+            <h2>VGA Communications</h2>
+            <p class="project-description">
+                In parallel, a VGA (Video Graphics Array) communication protocol was developed. The purpose of this was to enable the system to output video data to a display.
+            </p>
+            <img src="assets/img/vga_circuit.png" alt="VGA Circuit" class="circuit-image">
+        </div>
+        <!-- Memory Buffer section -->
+        <div class="col-12 mt-5">
+            <h2>Memory Buffering</h2>
+            <p class="project-description">
+                The key to achieving seamless data handling and display was the implementation of a memory buffer. This component of the system was responsible for storing incoming data from the UART communication, then outputting it via the VGA communication protocol to the display.
+            </p>
+            <img src="assets/img/memory_buffer_circuit.png" alt="Memory Buffer Circuit" class="circuit-image">
+        </div>
+    </div>
+</div>
+</body>
+</html>
