@@ -44,6 +44,11 @@ p {
     margin-bottom: 70px;
 }
 
+.section-heading h1 {
+  color:white;
+  padding-top: 100px;
+  padding-bottom: 10px;
+}
 .section-heading h2:before {
     width: 1px;
     height: 100px;
@@ -168,7 +173,7 @@ a.menu-link { display: none; }
 
 .main-header {
     background-color: rgba(22,34,57,0.95);
-    height: 80px;
+    height: 50px;
     position: fixed;
     z-index: 12;
     width: 100%;
@@ -177,8 +182,9 @@ a.menu-link { display: none; }
 
 .main-header .logo {
     float: left;
-    line-height: 80px;
+    line-height: 50px;
     padding-left: 60px;
+    padding-top: 5px;
 }
 
 .main-header .logo a {
@@ -199,7 +205,7 @@ a.menu-link { display: none; }
 
 .main-menu li {
     display: inline-block;
-    line-height: 79px;
+    line-height: 30px;
     margin-left: 15px;
     position: relative;
 }
@@ -221,9 +227,9 @@ a.menu-link { display: none; }
 
 .main-menu li button {
   background-color: rgba(22,34,57,0.95);
-  border-radius: 2px;
-  border-color: #000;
-  height: 79px;
+  border-radius: 1px;
+  border-color: rgba(22,34,57,0.04);
+  height: 50px;
 }
 
 .main-menu li.has-submenu a:after {
@@ -638,10 +644,9 @@ section.why-us {
 }
 
 section.hello {
-    /*background-image: url(../images/background4.jpg);*/
+    background-image: url(../images/contact-bg.jpg);    
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: #020011da;
     padding-bottom: 50px;
 }
 
