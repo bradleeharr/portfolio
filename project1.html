@@ -40,10 +40,9 @@
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
         <ul class="main-menu">
+        <li><button onclick=prevPage()> Previous </button></li>
+        <li><button onclick=nextPage()> Next </button> </li>
         <li><a href="./index.html">Home</a></li>
-        <li><a href="#section6">Contact</a></li>
-
-        <li><button onclick="window.open('assets/resume.pdf');">Resume</a></li>
 
         </ul>
     </nav>
@@ -91,18 +90,21 @@
                     originally input into the transmitter. </p>
 
             <h2> Methods </h2>
-            <p class="project-description"> Throughout the implementation of this project, I faced
-            many problems and found several interesting solutions. The first step the design 
-            was in creating a useful transmitter, capable of generating and modulating an audio
-            signal. For this transmitter, I first designed an astable 555-timer to generate
-            a test signal of a 1kHz square wave. This signal could be triggered with a
-            push-button connected to the reset pin. </p>
-                
-            <img src="assets/images/555_Signal.png" alt="555-Timer Circuit to generate signal" class="circuit-image">
-
+            <p class="project-description"> 
+                Throughout the implementation of this project, I faced
+                many problems and found several interesting solutions. The first step the design 
+                was in creating a useful transmitter, capable of generating and modulating an audio
+                signal. For this transmitter, I first designed an astable 555-timer to generate
+                a test signal of a 1kHz square wave. This signal could be triggered with a
+                push-button connected to the reset pin. 
+            </p>
+            <h4> 555 Timer Circuit to Generate Test Signal </h4>
+            <p class ="text-center">   
+                <img src="assets/images/555_Signal.png" alt="555-Timer Circuit to generate signal" class="circuit-image">
+            </p> 
                 <p class="project-description"> 
-                    The microphone acts as the initial input device, capturing audio 
-                    signals to be processed. These analog signals are then converted to electrical signals.
+                    Aside from the 555-timer signal for testing, a small electret microphone was also used as the input device, capturing audio 
+                    signals from a headphone speaker that was placed next to it. Using the microphone, these analog signals are converted to electrical signals.
                 </p>
         </div>
         <!-- Amplitude Modulator section -->
@@ -111,7 +113,9 @@
             <p class="project-description">
                 The electrical signals are then fed into an amplitude modulator. The modulator multiplies the input signal with a carrier signal of frequency 100kHz, resulting in an amplitude-modulated signal.
             </p>
-            <img src="assets/images/Chopper_Modulator.png" alt="Audio Amplifier Circuit" class="circuit-image">
+            <p class="text-center">
+                <img src="assets/images/Chopper_Modulator.png" alt="Audio Amplifier Circuit" class="circuit-image">
+            </p>
         </div>
         <!-- Amplifier section -->
         <div class="col-12 mt-5">
@@ -119,7 +123,9 @@
             <p class="project-description">
                 The modulated signal is then fed into an amplifier to strengthen the signal for transmission.
             </p>
-            <img src="assets/images/AM_Amplifier.png" alt="Amplifier Circuit" class="circuit-image">
+            <p class="text-center">
+                <img src="assets/images/AM_Amplifier.png" alt="Amplifier Circuit" class="circuit-image">
+            </p>
         </div>
         <!-- Demodulator section -->
         <div class="col-12 mt-5">
@@ -129,15 +135,19 @@
                 the signal. This component uses a diode and LC circuit to remove the carrier signal,
                 leaving only the original audio signal.
             </p>
-            <img src="assets/images/Envelope_Detector.png" alt="Demodulator Circuit" class="circuit-image">
-        </div>
+            <p class="text-center">
+                <img src="assets/images/Envelope_Detector.png" alt="Demodulator Circuit" class="circuit-image">
+            </p>
+            </div>
         <!-- Speaker section -->
         <div class="col-12 mt-5">
             <h2>Speaker</h2>
             <p class="project-description">
                 Finally, the demodulated signal is fed into an audio amplifier to ensure that it's strong enough to drive a speaker. The speaker converts the electrical signals back into audio signals, reproducing the original sound.
             </p>
-            <img src="assets/images/LM386_Setup.png" alt="Speaker Circuit" class="circuit-image">
+            <p class="text-center">
+                <img src="assets/images/LM386_Setup.png" alt="Speaker Circuit" class="circuit-image">
+            </p>
         </div>
 
         <div class="col12 mt5">
@@ -152,11 +162,15 @@
                 to very-low wattage. The final circuit put together can be seen in the images below,
                 with the transmitter and receiver:
             </p>
-            <h4> Transmitter </h4>
-            <img src="assets/images/Transmitter.png" alt="Transmitter Breadboard Circuit" class="circuit-image">
-            <p></p>
-            <h4> Receiver </h4>
-            <img src= "assets/Images/Receiver.png" alt="Receiver Breadboard Circuit" class="circuit-image">
+            <h4 class="text-center"> Transmitter </h4>
+            <p class="text-center">
+                <img src="assets/images/Transmitter.png" alt="Transmitter Breadboard Circuit" class="breadboard-image">
+            </p>
+            <h4 class="text-center"> Receiver </h4>
+            <p class="text-center">
+                <img src= "assets/Images/Receiver.png" alt="Receiver Breadboard Circuit" class="breadboard-image">
+            </p>
+
         </div>
     </div>
 </div>

@@ -14,7 +14,7 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/fontaIsome.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
@@ -40,9 +40,10 @@
         </div>
         <nav id="menu" class="main-nav" role="navigation">
             <ul class="main-menu">
+            <li><button onclick=prevPage()> Previous </button></li>
+            <li><button onclick=nextPage()> Next </button> </li>
             <li><a href="./index.html">Home</a></li>
-            <li><a href="#section6">Contact</a></li>
-            <li><button onclick="window.open('assets/resume.pdf');">Resume</a></li>
+
     
             </ul>
         </nav>
@@ -54,30 +55,31 @@
         </div>
         <div class="col-12 mt-4">
             <p class="project-description">
-                This project delves into the complex issue of blind quality assessment of stereo images. By leveraging the tools of Fourier analysis, the Gabor transform, and luminance and contrast metrics, we developed innovative techniques to evaluate the quality of stereo images.
+                This project delves into the complex issue of blind quality assessment of stereo images. By leveraging the tools of Fourier analysis, the Gabor transform, and luminance and contrast metrics, I developed innovative techniques to evaluate the quality of stereo images.
             </p>
         </div>
         <!-- Fourier Analysis section -->
         <div class="col-12 mt-5">
             <h2>Fourier Analysis</h2>
             <p class="project-description">
-                Fourier analysis was the first method we utilized for assessing the quality of stereo images. It involved analyzing the frequency components of the images and comparing the differences to determine quality discrepancies.
+                Fourier analysis was the first method I utilized for assessing the quality of stereo images. It involved analyzing the frequency components of the images and comparing the differences to determine quality discrepancies.
             </p>
-            <img src="assets/img/fourier_analysis.png" alt="Fourier Analysis" class="image-quality">
+            <img src="assets/images/project_stereo.jpg" alt="Fourier Analysis" class="image-quality">
         </div>
         <!-- Gabor Transform section -->
         <div class="col-12 mt-5">
             <h2>Gabor Transform</h2>
             <p class="project-description">
-                Next, we employed the Gabor transform, a technique used to analyze the spatial frequency content in localized regions of the stereo images. This gave us further insights into localized discrepancies and details that might not be noticeable at a global level.
+                Next, I employed the Gabor transform, a technique used to analyze the spatial frequency content in localized regions of the stereo images. This gave us further insights into localized discrepancies and details that might not be noticeable at a global level.
             </p>
-            <img src="assets/img/gabor_transform.png" alt="Gabor Transform" class="image-quality">
+            <img src="assets/images/Sixteen Gabor Filters.png" alt="Gabor Transform" class="image-quality">
+            <img src="assets/images/Original vs Gabor Filtered.png" alt="Original Image Compared to Gabor Filtered Image" class="image-quality">
         </div>
         <!-- Luminance and Contrast Metrics section -->
         <div class="col-12 mt-5">
             <h2>Luminance and Contrast Metrics</h2>
             <p class="project-description">
-                Lastly, we used luminance and contrast metrics to measure the perceived brightness and contrast in different parts of the stereo images. This allowed us to account for perceptual aspects of visual quality assessment, completing a comprehensive evaluation of the stereo image quality.
+                Lastly, I used luminance and contrast metrics to measure the perceived brightness and contrast in different parts of the stereo images. This alloId us to account for perceptual aspects of visual quality assessment, completing a comprehensive evaluation of the stereo image quality.
             </p>
             <img src="assets/img/luminance_contrast.png" alt="Luminance and Contrast Metrics" class="image-quality">
         </div>

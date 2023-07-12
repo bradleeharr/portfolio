@@ -40,9 +40,10 @@
         </div>
         <nav id="menu" class="main-nav" role="navigation">
             <ul class="main-menu">
+            <li><button onclick=prevPage()> Previous </button></li>
+            <li><button onclick=nextPage()> Next </button> </li>
             <li><a href="./index.html">Home</a></li>
-            <li><a href="#section6">Contact</a></li>
-            <li><button onclick="window.open('assets/resume.pdf');">Resume</a></li>
+
     
             </ul>
         </nav>
@@ -53,9 +54,94 @@
             <h1 class="display-4 text-center">Dance Rhythm Game using an LPC1769 Microcontroller and DE10-Lite FPGA</h1>
         </div>
         <div class="col-12 mt-4">
+            <p class = "project-description"> <em> December 15, 2022 </em></p> 
+            <p class = "project-description"> Bradlee Harrison and <a href=https://www.linkedin.com/in/adam-tran-60a0b0268/> <em> Adam Tran </em></a>
+
             <p class="project-description">
-                This project involved developing and implementing UART and VGA communications on a DE10-Lite FPGA board. By using a memory buffer to store and output video data, the system was able to effectively handle and display the communication data.
+                The goal of our project was to emulate an arcade-style music rhythm 
+                game based on the music video game series Dance Dance Revolution. An 
+                example of this arcade game can be seen in the image below. The goal of the 
+                game is to tap arrows on the pad with the correct timing using your 
+                feet when prompted by arrows displayed on a screen. 
             </p>
+            <h4> Example of Game Machine:</h4>
+            <div class="text-center">            
+                <img src="assets/images/782px-DanceDanceRevolution_White_Machine_with_DDR_A_installed.png" class="display-image">
+            </div>
+            <p class="text-center"> 
+                Image: LABcrabs 27 January 2019 | DanceDance Revolution - A machine in Oakville, Ontario, Canada | <a href=https://commons.wikimedia.org/wiki/File:DanceDanceRevolution_White_Machine_with_DDR_A_installed.png> Source </a>
+                <br/> licensed under the <a href=https://en.wikipedia.org/wiki/en:Creative_Commons> Creative Commons Attribution-Share Alike 4.0 International license. </a> No changes were made.
+            </p>
+            <h4> Capabilities </h4>
+            <p class="project-description">
+                We developed a basic dance pad game using an LPC1769 microcontroller and a DE-10 Lite FPGA.
+            </p>
+            <p class="project-description"> 
+                This was performed by interfacing with a serial PlayStation 2 Dance Pad controller, a speaker output, and 
+                a VGA monitor. The display is output with a DE-15 VGA Connector connected to the FPGA 
+                with the transmitter connection from the microcontroller to the GPIO pin.
+            </p>
+            <p class="project-description"> 
+                The microcontroller is capable of playing two different songs which are programmed into it. 
+                The song, tempo, and volume can be configured using inputs on the dance pad. The microcontroller communicates over UART the X and Y positions of 
+                rectangles to place on the VGA display, which is then processed by the FPGA to control the VGA output. 
+            </p>
+            <h6> Song Selection and Start Process  </h6>
+            <ul> 
+                <li> Turn on the microcontroller and compile the main code. </li>
+                <li> Press the SELECT button to select the song from two different tracks. </li>
+                <li> Press the TRIANGLE button to change from display mode to music selection mode. </li>
+                    <ul>
+                         <li> In display mode, the display will show the arrows scrolling on the screen. </li>
+                         <li> In music selection mode, the display will freeze and the music will play. </li>
+                    </ul>
+                <li> Press the CIRCLE button to increase the music volume. </li>
+                <li> Press the X button to decrease the music volume. </li>
+                <li> Press the LEFT arrow to decrease the music tempo. </li> 
+                <li> Press the RIGHT arrow to increase the music tempo. </li> 
+                <li> Press the START button to start the song selected. </li>
+            </ul>
+            <br/>
+            <h2> Software Description </h2>
+            <p class="project-description">
+                The software implements the primary function of playing music using the 
+                Digital-to-Analog Converter present on the LPC1769. 
+            </p>
+            <h4> Audio </h4>
+            <p class="project-description">
+                When an input switch is triggered to begin the audio playback, we start a timer which controls 
+                all of the audio timings for the audio output, beginning the audio playback.
+                Using other inputs, the volume can also be controlled using the X and Circle pads of the controller mat as well as the Left and Right pads for the tempo of the music.
+            </p>
+            <p class="project-description">
+                A variety of different musical notes are created by pulsing square waves at varying frequencies. To set the list of notes that will be output when the music is played, we created two arrays of notes and defined each note with a set amount of time to wait in between pulses. Multiple channels are able to play at the same time, generating harmonies and chords. A percussion sound is generated using a linear feedback shift register. Each channel of audio has varying levels of decay, which gradually pulls the amplitude of the square wave lower.
+            </p>
+            <h4>Display</h4>
+            <p class="project-description">
+                The software implements the function of displaying a graphical video output to a display using a data connection to a basic VGA controller implemented on a DE10-LITE FPGA board. The board controls the timing and horizontal and vertical sync required for a 640 x 480 resolution VGA interface. To reduce the memory usage, we save the pixel values in an array of 320 x 240 memory, with two bits of color information per pixel. This results in only 57.6 kB of memory required to store all pixel values. The results of the VGA controller’s horizontal sync, vertical sync, and color data output can be seen in the following images.
+            </p>
+            <img src="assets/images/vsync">
+            <img src="assets/images/hsync">
+            <img src="assets/images/csync">
+
+            <h4> Input </h4>
+            <p class="project-description">
+                The software implements the function of receiving digital input from a PlayStation 2
+                Dance Dance Revolution Regular Dance Pad. This dance pad uses a serial interface to
+                send input signals. Using an SPI connection, the LPC1769 functions as the controller, 
+                and the dance pad functions as a target. The LPC1769 polls the dance pad using a 
+                series of command words and receives 5 bytes of data from the dance pad. The 4th 
+                and 5th bytes of data contain the information for the buttons pressed on the dance 
+                pad, including the left, up, right, down arrows, start, select and the cross, circle,
+                square, and triangle buttons. Based on the inputs from the dance pad, we save the state 
+                and detect the edge when the switch is pressed by checking when the signal changes from 
+                low to high.
+            </p>
+          
+            
+        </div>
+
+            
         </div>
         <!-- UART section -->
         <div class="col-12 mt-5">
@@ -66,6 +152,7 @@
             <img src="assets/img/uart_circuit.png" alt="UART Circuit" class="circuit-image">
         </div>
         <!-- VGA section -->
+        
         <div class="col-12 mt-5">
             <h2>VGA Communications</h2>
             <p class="project-description">

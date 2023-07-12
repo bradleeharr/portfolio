@@ -798,6 +798,9 @@ section.courses .item img {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     height: 30%;
+    max-height: 150px;
+    object-fit: cover;
+    object-position: center;
     
 }
 
