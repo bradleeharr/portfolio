@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleDiv = document.createElement('div');
     titleDiv.id = 'titleDiv';
 
-    const totalCells = 150000;
+    const totalCells = 180000;
 
     let canvasWidth = container.clientWidth;
     let canvasHeight = container.clientHeight;
@@ -19,9 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let nextGrid = createGrid(width, height);
 
     let waveAmplitude = 30000;
-    let columnsToUpdate = 1000;
+    let columnsToUpdate = width;
+    
     let updateCounter = 0;
-
+    let stopPopTime = 2;
+    let resetTime = 400;
+    let randAmt = 0.3;
     // Set canvas size to match the container
     canvas.width = container.clientWidth;
     canvas.height = container.clientHeight;
@@ -46,13 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
         grid = createGrid(width, height);
         grid.forEach(row => {
             row.forEach((cell, index) => {
-                row[index] = Math.random() + Math.random() < 0.3;
+                row[index] = Math.random() + Math.random() < randAmt;
             });
         });
         nextGrid = createGrid(width, height);
         nextGrid.forEach(row => {
             row.forEach((cell, index) => {
-                row[index] = Math.random() + Math.random() < 0.3;
+                row[index] = Math.random() + Math.random() < randAmt;
             });
         });
     });
@@ -83,11 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
             waveAmplitude = (waveAmplitude + 1) % 1;
             for (let x = 0; x < width; x++) {
                 if (grid[y][x]) {
-                    if (y%2 ||  x%2 == 1) {
-                        ctx.fillStyle = 'rgba(51, 20, 128, 1.0)';
+                    if (Math.sin(2*x+y) > 0.5) {
+                        ctx.fillStyle = 'rgba(150, 75, 200, 0.8)';
                     }
                     else {
-                        ctx.fillStyle = 'rgba(51,51,140,1.0)';
+                        ctx.fillStyle = 'rgba(75,150,200,0.8)';
                     }
                     ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
                 }
@@ -105,7 +108,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 offset = Math.sin(updateCounter) * waveAmplitude + Math.cos(updateCounter) * waveAmplitude + Math.sin(updateCounter*1.5) * waveAmplitude;
                 columnToUpdate = (Math.round(updateCounter + offset) + i) % width;
                 const neighbors = countNeighbors(grid, columnToUpdate, y);
-                nextGrid[y][columnToUpdate] = (Math.random() < 0.001 || neighbors === 3 || neighbors === 2 && grid[y][columnToUpdate]);
+                nextGrid[y][columnToUpdate] = ( neighbors === 3 || neighbors === 2 && grid[y][columnToUpdate]);
+                if (updateCounter < stopPopTime) {
+                    let random_num = Math.random();
+                    if (y > 0) nextGrid[y-1][columnToUpdate] |= (random_num < 0.005);
+                    if (columnToUpdate < columnsToUpdate) nextGrid[y][columnToUpdate+1] |= (random_num < 0.01);
+                    if (columnToUpdate+1 < columnsToUpdate) nextGrid[y][columnToUpdate+2] |= (random_num < 0.007);
+                    if (columnToUpdate+2 < columnsToUpdate) nextGrid[y][columnToUpdate+3] |= (random_num < 0.006);
+                    if (columnToUpdate+3 < columnsToUpdate) nextGrid[y][columnToUpdate+4] |= (random_num < 0.9);
+                }               
             }
             // Copy the updated column from nextGrid to grid
             for (let y = 0; y < height; y++) {
@@ -113,10 +124,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if ((updateCounter > 200 && Math.random() > 0.90) || (updateCounter > 300 && Math.random() > 0.4)) {
+        if ((updateCounter > resetTime && Math.random() > 0.90) || (updateCounter > resetTime*1.5 && Math.random() > 0.4)) {
             for (let i2 = 0; i2 < columnsToUpdate; i2++) {
                 for (let y2 = 0; y2 < height; y2++) {
-                    grid[y2][i2] = Math.random() + Math.random() < 0.3;
+                    grid[y2][i2] = Math.random() + Math.random() < randAmt;
                 }
             }
             updateCounter = 0;
@@ -130,14 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize the grid with random values
     grid.forEach(row => {
         row.forEach((cell, index) => {
-            row[index] = Math.random() + Math.random() < 0.3;
+            row[index] = Math.random() + Math.random() < randAmt;
         });
     });
 
     // Start the animation loop
     // Start the animation loop with initial speed
     let start = performance.now();
-    let delay = 60; // Delay between frames in milliseconds
+    let delay = 50; // Delay between frames in milliseconds
 
     function startAnimation(timestamp) {
         if (timestamp - start >= delay) {

@@ -18,5 +18,5 @@
         const name = page.split(".").shift();
         let baseName = name.replace(/[0-9]/g, '');
         let number = parseInt(name.replace(/[^\d]/g,''),10);
-        window.location.href = baseName + (number + 1) + ".html";
+        window.location.href = baseName + ((number + 1) % 10 )+ ".html";
     }

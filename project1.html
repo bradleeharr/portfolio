@@ -41,8 +41,8 @@
     <nav id="menu" class="main-nav" role="navigation">
         <ul class="main-menu">
         <li><a href="./index.html">Home</a></li>
-        <li><a href="#section3">About Me</a></li>
         <li><a href="#section6">Contact</a></li>
+
         <li><button onclick="window.open('assets/resume.pdf');">Resume</a></li>
 
         </ul>
@@ -52,20 +52,58 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-12">
-            <h1 class="display-4 text-center">100 kHz Amplitude Modulator Circuit Project</h1>
+            <h1 class="display-4">A 100 kHz Amplitude Modulator Circuit With Basic Circuit Components</h1>
         </div>
         <div class="col-12 mt-4">
+            <p class = "project-description"> <em> May 22, 2022 </em></p>
+
             <p class="project-description">
-                This project is a comprehensive dive into the design and operation of a 100 kHz amplitude modulator circuit. The primary components involved in the process are a microphone, amplitude modulator, amplifier, transmitting medium, demodulator, and a speaker.
+                The primary components involved in the process are a microphone, LM386 audio amplitifer, operational amplifier , 2N222A MOSFET transistor, a speaker, and resistors, inductors, and capacitors.
             </p>
         </div>
         <!-- Microphone section -->
         <div class="col-12 mt-5">
-            <h2>Microphone</h2>
+            <h2>Description</h2>
             <p class="project-description">
-                The microphone acts as the initial input device, capturing audio signals to be processed. These analog signals are then converted to electrical signals.
-            </p>
-            <img src="assets/img/microphone_circuit.png" alt="Microphone Circuit" class="circuit-image">
+                In this project, I designed a basic communication system consisting of a transmitter and
+                receiver that is capable of processing an input signal through an amplitude modulator and
+                transmitting it through a medium. The process that i use in modulating and demodulating
+                the signal is very similar to the process of standard AM radio transmission! </p>
+            
+                <h4> Transmitter </h4>
+                <p class="project-description"> For a communication system, there are many possible transmitter types. For
+                the sake of simplicity, I designed an AM transmitter that performs Double-Sideband Large Carrier (DSB-LC) modulation. 
+                This transmitter takes an audio signal, mixes it with a modulating sinusoid, and adds a large high-frequency
+                carrier to create a DSB-LC signal. Mixer circuits and summer circuits are important to design and configure 
+                throughout the scope of this project. 
+                
+                <p class="project-description"> The signal will also have to be amplified to a
+                sufficiently large level for transmission. For this, an active filter between 150
+                to 15kHz (the range of normal human hearing) was necessary to design. </p>
+                
+                <h4> Receiver </h4> 
+                <p class="project-description"> To receive this signal, I use an envelope detector consisting of a diode and
+                    an RC circuit to recover the envelope of the DSB-LC signal, which contains
+                    the demodulated original signal. The received signal will have to be amplified 
+                    from a smaller signal level, and an amplifier between the frequencies 150 Hz to
+                    15kHz will be necessary for a significant output to be detected. Finally, this
+                    received signal must be output through a speaker in order to reproduce the sound 
+                    originally input into the transmitter. </p>
+
+            <h2> Methods </h2>
+            <p class="project-description"> Throughout the implementation of this project, I faced
+            many problems and found several interesting solutions. The first step the design 
+            was in creating a useful transmitter, capable of generating and modulating an audio
+            signal. For this transmitter, I first designed an astable 555-timer to generate
+            a test signal of a 1kHz square wave. This signal could be triggered with a
+            push-button connected to the reset pin. </p>
+                
+            <img src="assets/images/555_Signal.png" alt="555-Timer Circuit to generate signal" class="circuit-image">
+
+                <p class="project-description"> 
+                    The microphone acts as the initial input device, capturing audio 
+                    signals to be processed. These analog signals are then converted to electrical signals.
+                </p>
         </div>
         <!-- Amplitude Modulator section -->
         <div class="col-12 mt-5">
@@ -73,7 +111,7 @@
             <p class="project-description">
                 The electrical signals are then fed into an amplitude modulator. The modulator multiplies the input signal with a carrier signal of frequency 100kHz, resulting in an amplitude-modulated signal.
             </p>
-            <img src="assets/img/amplitude_modulator_circuit.png" alt="Amplitude Modulator Circuit" class="circuit-image">
+            <img src="assets/images/Chopper_Modulator.png" alt="Audio Amplifier Circuit" class="circuit-image">
         </div>
         <!-- Amplifier section -->
         <div class="col-12 mt-5">
@@ -81,23 +119,44 @@
             <p class="project-description">
                 The modulated signal is then fed into an amplifier to strengthen the signal for transmission.
             </p>
-            <img src="assets/img/amplifier_circuit.png" alt="Amplifier Circuit" class="circuit-image">
+            <img src="assets/images/AM_Amplifier.png" alt="Amplifier Circuit" class="circuit-image">
         </div>
         <!-- Demodulator section -->
         <div class="col-12 mt-5">
             <h2>Demodulator</h2>
             <p class="project-description">
-                Once the signal is received, it is fed into a demodulator. This component utilizes a diode and LC circuit to remove the carrier signal, leaving only the original audio signal.
+                Once the signal is received, it is fed into an envelope detector, which demodulates 
+                the signal. This component uses a diode and LC circuit to remove the carrier signal,
+                leaving only the original audio signal.
             </p>
-            <img src="assets/img/demodulator_circuit.png" alt="Demodulator Circuit" class="circuit-image">
+            <img src="assets/images/Envelope_Detector.png" alt="Demodulator Circuit" class="circuit-image">
         </div>
         <!-- Speaker section -->
         <div class="col-12 mt-5">
             <h2>Speaker</h2>
             <p class="project-description">
-                Finally, the demodulated signal is fed into an amplifier to ensure that it's strong enough to drive a speaker. The speaker converts the electrical signals back into audio signals, reproducing the original sound.
+                Finally, the demodulated signal is fed into an audio amplifier to ensure that it's strong enough to drive a speaker. The speaker converts the electrical signals back into audio signals, reproducing the original sound.
             </p>
-            <img src="assets/img/speaker_circuit.png" alt="Speaker Circuit" class="circuit-image">
+            <img src="assets/images/LM386_Setup.png" alt="Speaker Circuit" class="circuit-image">
+        </div>
+
+        <div class="col12 mt5">
+            <h2> Results </h2>
+            <p class="project-description">
+                The resulting circuit was capable of transmitting and receiving the audio signals
+                over a very short distance. In order to increase the distance of the transmission,
+                an increase in the power of the transmitter would increase the distance that the
+                waves would transmit. However, because the carrier frequency I used, 100kHz,
+                is a lower frequency, there is a potential issue that the low frequency waves could
+                propogate over large distances. As a result, it was necessary to limit the power
+                to very-low wattage. The final circuit put together can be seen in the images below,
+                with the transmitter and receiver:
+            </p>
+            <h4> Transmitter </h4>
+            <img src="assets/images/Transmitter.png" alt="Transmitter Breadboard Circuit" class="circuit-image">
+            <p></p>
+            <h4> Receiver </h4>
+            <img src= "assets/Images/Receiver.png" alt="Receiver Breadboard Circuit" class="circuit-image">
         </div>
     </div>
 </div>

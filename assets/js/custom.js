@@ -103,4 +103,11 @@
 	initializeClock(((new Date()).getFullYear()+1) + "/1/1")
 	})()
 
+   $(document).ready(function() {
+        $('.menu-link').click(function(e) {
+            e.preventDefault();
+            $('#menu').toggle();
+        });
+    });
 })(jQuery);
+
