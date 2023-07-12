@@ -484,7 +484,7 @@ section.features .col-4 {
 .content-hide p {
   color: #fff;
   font-size: 20px;
-  line-height: 24px;
+  line-height: 24px;;
 }
 
 @media screen and (max-width: 767px) {
@@ -1424,6 +1424,10 @@ section.contact {
     background-size: cover;
     background-color: #172238;
     padding-bottom: 120px;
+}
+
+section.contact a {
+  font-size: 18px;
 }
 
 section.contact h4 {
