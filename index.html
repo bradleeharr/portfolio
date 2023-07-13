@@ -372,7 +372,7 @@
           <br/>
           <h4> Send a Message: </h4> 
           <br/>
-          <form id="contact" action="" method="post">
+          <form id="contact" action="https://formspree.io/f/mqkvkjgj" method="post">
             <div class="row">
               <div class="col-md-6">
                   <fieldset>
@@ -399,7 +399,6 @@
         </div>
       </div>
     </div>
-  </section>
   <!-- <div class="col-md-12">
     <div id="map">
       <li> <a href="" >Lichess </a> </li> <br/>
@@ -480,5 +479,37 @@
           checkSection();
         });
     </script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#contact').on('submit', function(event) {
+        event.preventDefault();
+
+        var form = $(this);
+        var messageEl = $('#form-message');
+
+        form.find('#form-submit').prop('disabled', true);
+        messageEl.text('Sending...').css('color', 'orange');
+
+        $.ajax({
+            url: form.attr('action'),
+            method: 'POST',
+            data: form.serialize(),
+            dataType: 'json',
+            success: function() {
+                messageEl.text('Thank you for your message!').css('color', 'green');
+                form.find('#form-submit').prop('disabled', false);
+                form[0].reset();
+            },
+            error: function() {
+                messageEl.text('Sorry, an error occurred. Please try again.').css('color', 'red');
+                form.find('#form-submit').prop('disabled', false);
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>

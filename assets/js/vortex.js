@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleDiv = document.createElement('div');
     titleDiv.id = 'titleDiv';
 
-    const totalCells = 180000;
+    const totalCells = 100000;
 
     let canvasWidth = container.clientWidth;
     let canvasHeight = container.clientHeight;
@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let updateCounter = 0;
     let stopPopTime = 2;
-    let resetTime = 400;
+    let resetTime = 200;
+    let dePopTime = 22;
     let randAmt = 0.3;
     // Set canvas size to match the container
     canvas.width = container.clientWidth;
@@ -58,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 row[index] = Math.random() + Math.random() < randAmt;
             });
         });
+        updateCounter = 0;
     });
 
     function createGrid(width, height) {
@@ -108,14 +110,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 offset = Math.sin(updateCounter) * waveAmplitude + Math.cos(updateCounter) * waveAmplitude + Math.sin(updateCounter*1.5) * waveAmplitude;
                 columnToUpdate = (Math.round(updateCounter + offset) + i) % width;
                 const neighbors = countNeighbors(grid, columnToUpdate, y);
-                nextGrid[y][columnToUpdate] = ( neighbors === 3 || neighbors === 2 && grid[y][columnToUpdate]);
+                nextGrid[y][columnToUpdate] = ( neighbors > 6 || neighbors === 3 || neighbors === 2 && grid[y][columnToUpdate]);
                 if (updateCounter < stopPopTime) {
                     let random_num = Math.random();
-                    if (y > 0) nextGrid[y-1][columnToUpdate] |= (random_num < 0.005);
+                    if (y > 0) nextGrid[y-1][columnToUpdate] |= (random_num < 0.05);
                     if (columnToUpdate < columnsToUpdate) nextGrid[y][columnToUpdate+1] |= (random_num < 0.01);
                     if (columnToUpdate+1 < columnsToUpdate) nextGrid[y][columnToUpdate+2] |= (random_num < 0.007);
                     if (columnToUpdate+2 < columnsToUpdate) nextGrid[y][columnToUpdate+3] |= (random_num < 0.006);
                     if (columnToUpdate+3 < columnsToUpdate) nextGrid[y][columnToUpdate+4] |= (random_num < 0.9);
+                }
+                if (updateCounter > resetTime - dePopTime) {
+                    let random_num = Math.random();
+                    nextGrid[y][columnToUpdate] = (neighbors == 4 || neighbors === 3 || neighbors === 2) && Math.random() > 0.55;
                 }               
             }
             // Copy the updated column from nextGrid to grid
@@ -125,16 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if ((updateCounter > resetTime && Math.random() > 0.90) || (updateCounter > resetTime*1.5 && Math.random() > 0.4)) {
-            for (let i2 = 0; i2 < columnsToUpdate; i2++) {
-                for (let y2 = 0; y2 < height; y2++) {
-                    grid[y2][i2] = Math.random() + Math.random() < randAmt;
-                }
-            }
-            updateCounter = 0;
+            updateCounter = stopPopTime;
         }
 
         render(grid);
-
         updateCounter++;
     }
 
