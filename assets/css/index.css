@@ -661,11 +661,11 @@ section.hello {
 
 
 #profile-pic {
-  border-top-right-radius: 12%;
-  border-top-left-radius: 12%;
-  border-bottom-left-radius:12%;
-  border-bottom-right-radius: 12%;
-  width: 220px;
+  border-top-right-radius: 100%;
+  border-top-left-radius: 100%;
+  border-bottom-left-radius:100%;
+  border-bottom-right-radius: 100%;
+  width: 110px;
   padding-left: 20px;
   padding-right: 20px;
 }
