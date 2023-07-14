@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let updateCounter = 0;
     let stopPopTime = 2;
-    let resetTime = 200;
-    let dePopTime = 22;
+    let resetTime = 250;
+    let dePopTime = 60;
     let randAmt = 0.3;
     // Set canvas size to match the container
     canvas.width = container.clientWidth;
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     container.appendChild(canvas);
     container.appendChild(titleDiv);
 
-    ctx.globalAlpha = 1.0;
+    ctx.globalAlpha = 0.6;
 
     // Recalculate on resize
     window.addEventListener('resize', () => {
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 if (updateCounter > resetTime - dePopTime) {
                     let random_num = Math.random();
-                    nextGrid[y][columnToUpdate] = (neighbors == 4 || neighbors === 3 || neighbors === 2) && Math.random() > 0.55;
+                    nextGrid[y][columnToUpdate] = ((neighbors == 1 && Math.random() > 0.98) || neighbors == 4 || neighbors === 3 || neighbors === 2) && Math.random() > 0.5375;
                 }               
             }
             // Copy the updated column from nextGrid to grid
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start the animation loop
     // Start the animation loop with initial speed
     let start = performance.now();
-    let delay = 50; // Delay between frames in milliseconds
+    let delay = 40; // Delay between frames in milliseconds
 
     function startAnimation(timestamp) {
         if (timestamp - start >= delay) {
