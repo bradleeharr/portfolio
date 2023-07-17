@@ -38,37 +38,107 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-12">
-            <h1 class="display-4 text-center">Embedded MIL-STD-1553 Project</h1>
+            <h1 class="display-4 text-center"><a href="https://www.cymstar.com/">CymSTAR</a> Embedded MIL-STD-1553 </h1>
         </div>
         <div class="col-12 mt-4">
+            <p class = "project-description"> <em> December 7, 2022 </em></p> 
+            <p class = "project-description"> Bradlee Harrison (Software), 
+                <em> Garret Meidl</em> (Software), 
+                <a href="https://www.linkedin.com/in/logan-butcher-44787b231/"> <em> Logan Butcher </em> </a> (Hardware), and
+                <a href="https://www.linkedin.com/in/mbugler/"> <em> Matt Bugler </em></a> (Project Manager)
+
             <p class="project-description">
-                In this project, an embedded system was developed to function as a MIL-STD-1553 Bus Monitor and Remote Terminal. This was achieved by controlling a HI-1575 transceiver chip using C-language firmware.
+                In this capstone project collaborated with <a href="https://www.cymstar.com/"> CymSTAR </a>, an embedded system was developed to function as a MIL-STD-1553 Bus Monitor and Remote Terminal. This was achieved by controlling a HI-1575 transceiver chip using C-language firmware and transmiting it over ethernet using a Python implementation of a TCP-IP connection.
             </p>
-            <img src="assets/img/embedded_initial.png" alt="Initial Embedded System" class="embedded-system-image">
+            <div class="text-center">           
+                <img src="assets/images/1553_block_diagram.png" alt="Initial Embedded System" class="embedded-system-image">
+            </div>
+
         </div>
         <!-- Design section -->
         <div class="col-12 mt-5">
-            <h2>Design</h2>
+            <h2>Introduction</h2>
             <p class="project-description">
-                The design phase involved sketching out the architecture of the embedded system, focusing on how the various components would interact. Particularly important was the interface between the microcontroller and the HI-1575 transceiver chip.
+                Using our BeagleBone Black 1553 Cape, we implement an interface between Ethernet and MIL-STD-1553 with Bus Monitor (BM) functionality and propose a framework for Remote Terminal (RT) functionality. 
             </p>
-            <img src="assets/img/design.png" alt="System Design" class="embedded-system-image">
+            <p class="project-description">
+                The cape's hardware interface controls a <a href="http://www.holtic.com/products/2981-hi-1575.aspx"> HI-1575 MIL-STD-1553 smart transceiver and encoder/decoder.</a> After interfacing with the MIL-STD-1553 bus data from the HI-1575 chip, we process the messages received based on our control setup (Bus Monitor or Remote Terminal).
+            </p>
+            <h4> Workflow </h4>
+            <p class="project-description">
+                In Bus Monitor mode, all words received on the bus connected to the HI-1575 chip will be placed into memory and transmitted over ethernet to the host computer.
+            </p>
+            <div class="text-center">
+                <img src="assets/images/1553_BM_Mode.jpg" alt="Bus Monitor Flowchart" class="embedded-system-image">
+            </div>
+            <p class="project-description"> 
+                In Remote Terminal mode, the BeagleBone Black 1553 Cape would be configured over ethernet to receive and transmit on the 1553 bus based on a configurable Remote Terminal address, configurable Remote Terminal subaddresses, and configurable transmit data words for each subaddress. 
+            </p>
+            <p class="project-description">
+            During Remote Terminal mode, in the case of a valid command word received, the BeagleBone Black 1553 Cape should respond with a valid status word on the 1553 bus. Data words from the 1553 bus will be stored and sent over ethernet if the command word sent corresponds to the valid Remote Terminal address and a valid Remote Terminal receive subaddress. The BeagleBone Black will respond with transmit data words if requested by a command word with a valid Remote Terminal address and a valid Remote Terminal transmit subaddress.
+            </p> 
+            <div class="text-center">
+                <img src="assets/images/1553_RT_Mode.jpg" alt="Bus Monitor Flowchart" class="embedded-system-image">
+            </div>
+            <br/>
+            <h2> Materials Used </h2>
+            <ul>
+                <li> BeagleBone Black </li>
+                <li> HI-1575 Chip </li>
+                <li> PCB Cape </li>
+                <li> 3D-Printed Case </li>
+                <li> Mini USB Connector </li>
+                <li> RJ45 Ethernet Connector </li>
+                <li> 1553 Triaxial Connectors </li>
+                <li> 1553 Bus Analyzer </li>
+                <li> Host Computer with Ethernet Port </li>
+            </ul>
+            <br/>
+
+        <div class="text-center">
+            <p class="project-description">
+                BeagleBone Black
+            </p>
+            <img src="assets/images/1553_Beaglebone_Black.jpg"> <br/>
+            <p class="project-description">
+            HI-1575 PCB Cape and Case
+            </p>
+            <img src="assets/images/1553_HI-1575_PCB_Cape_and_Case.jpg"> <br/>
+            <p class="project-description">
+            Mini USB Connector
+            </p>
+            <img src="assets/images/1553_Mini_USB_Connector.jpg"> <br/>
+            <p class="project-description">
+            RJ 45 Ethernet Connector
+            </p>
+            <img src="assets/images/1553_RJ_45_Ethernet_Connector.jpg"> <br/>
+            <p class="project-description">
+            1553 Triaxial Connectors
+            </p>
+            <img src="assets/images/1553_Triaxial_Connectors.jpg"> <br/>
+            <p class="project-description">
+            1553 Bus Analyzer
+            </p>
+            <img src="assets/images/1553_Bus_Analyzer.jpg"> <br/>
         </div>
+        </div>
+
         <!-- Firmware Development section -->
         <div class="col-12 mt-5">
             <h2>Firmware Development</h2>
             <p class="project-description">
-                With the system design in place, firmware was developed in C to control the HI-1575 chip. The firmware was responsible for interpreting incoming messages, performing necessary actions, and generating responses.
+                With the system design in place, firmware for the BeagleBone Black was developed in C and Python to control the HI-1575 chip. The firmware was responsible for interpreting incoming messages, performing necessary actions, and generating responses.
             </p>
-            <img src="assets/img/firmware.png" alt="Firmware Development" class="embedded-system-image">
         </div>
         <!-- Testing and Verification section -->
         <div class="col-12 mt-5">
             <h2>Testing and Verification</h2>
             <p class="project-description">
-                The final stage was testing and verification. Here, the embedded system was connected to a MIL-STD-1553 bus and its performance as a bus monitor and remote terminal was assessed. The successful performance confirmed the correctness of the design and implementation.
+                The final stage was testing and verification. Here, the embedded system was connected to a MIL-STD-1553 bus analyzer and its performance as a bus monitor and remote terminal was assessed.
             </p>
-            <img src="assets/images/project-cymstar.jpg" alt="Testing and Verification" class="embedded-system-image">
+            <div class="text-center">
+                <img src="assets/images/project-cymstar.jpg" alt="Testing and Verification" class="embedded-system-image">
+            </div>
         </div>
     </div>
 </div>

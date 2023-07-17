@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     container.appendChild(canvas);
     container.appendChild(titleDiv);
 
-    ctx.globalAlpha = 0.6;
+    ctx.globalAlpha = 1.0;
 
     // Recalculate on resize
     window.addEventListener('resize', () => {
@@ -46,20 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
-
-        grid = createGrid(width, height);
-        grid.forEach(row => {
-            row.forEach((cell, index) => {
-                row[index] = Math.random() + Math.random() < randAmt;
-            });
-        });
-        nextGrid = createGrid(width, height);
-        nextGrid.forEach(row => {
-            row.forEach((cell, index) => {
-                row[index] = Math.random() + Math.random() < randAmt;
-            });
-        });
-        updateCounter = 0;
     });
 
     function createGrid(width, height) {
@@ -89,10 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let x = 0; x < width; x++) {
                 if (grid[y][x]) {
                     if (Math.sin(2*x+y) > 0.5) {
-                        ctx.fillStyle = 'rgba(150, 75, 200, 0.8)';
+                        ctx.fillStyle = 'rgba(150, 75, 200, 1.0)';
                     }
                     else {
-                        ctx.fillStyle = 'rgba(75,150,200,0.8)';
+                        ctx.fillStyle = 'rgba(75,150,200,1.0)';
                     }
                     ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
                 }
@@ -148,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start the animation loop
     // Start the animation loop with initial speed
     let start = performance.now();
-    let delay = 40; // Delay between frames in milliseconds
+    let delay = 20; // Delay between frames in milliseconds
 
     function startAnimation(timestamp) {
         if (timestamp - start >= delay) {
