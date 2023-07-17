@@ -19,18 +19,6 @@
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
     <link rel="stylesheet" href="assets/css/project.css">
-
-    <!-- Custom styles for this template -->
-    <style>
-      .project-description {
-        font-size: 18px;
-        line-height: 1.6;
-      }
-      .circuit-image {
-        width: 100%;
-        height: auto;
-      }
-    </style>
   </head>
 
 <body>
@@ -107,23 +95,6 @@
                 The software implements the primary function of playing music using the 
                 Digital-to-Analog Converter present on the LPC1769. 
             </p>
-            <h4> Audio </h4>
-            <p class="project-description">
-                When an input switch is triggered to begin the audio playback, we start a timer which controls 
-                all of the audio timings for the audio output, beginning the audio playback.
-                Using other inputs, the volume can also be controlled using the X and Circle pads of the controller mat as well as the Left and Right pads for the tempo of the music.
-            </p>
-            <p class="project-description">
-                A variety of different musical notes are created by pulsing square waves at varying frequencies. To set the list of notes that will be output when the music is played, we created two arrays of notes and defined each note with a set amount of time to wait in between pulses. Multiple channels are able to play at the same time, generating harmonies and chords. A percussion sound is generated using a linear feedback shift register. Each channel of audio has varying levels of decay, which gradually pulls the amplitude of the square wave lower.
-            </p>
-            <h4>Display</h4>
-            <p class="project-description">
-                The software implements the function of displaying a graphical video output to a display using a data connection to a basic VGA controller implemented on a DE10-LITE FPGA board. The board controls the timing and horizontal and vertical sync required for a 640 x 480 resolution VGA interface. To reduce the memory usage, we save the pixel values in an array of 320 x 240 memory, with two bits of color information per pixel. This results in only 57.6 kB of memory required to store all pixel values. The results of the VGA controller’s horizontal sync, vertical sync, and color data output can be seen in the following images.
-            </p>
-            <img src="assets/images/vsync">
-            <img src="assets/images/hsync">
-            <img src="assets/images/csync">
-
             <h4> Input </h4>
             <p class="project-description">
                 The software implements the function of receiving digital input from a PlayStation 2
@@ -137,37 +108,68 @@
                 and detect the edge when the switch is pressed by checking when the signal changes from 
                 low to high.
             </p>
-          
-            
+            <h4> Audio </h4>
+            <p class="project-description">
+                When an input switch is triggered to begin the audio playback, we start a timer which controls 
+                all of the audio timings for the audio output, beginning the audio playback.
+                Using other inputs, the volume can also be controlled using the X and Circle pads of the controller mat as well as the Left and Right pads for the tempo of the music.
+            </p>
+            <p class="project-description">
+                A variety of different musical notes are created by pulsing square waves at varying frequencies. To set the list of notes that will be output when the music is played, we created two arrays of notes and defined each note with a set amount of time to wait in between pulses. Multiple channels are able to play at the same time, generating harmonies and chords. A percussion sound is generated using a linear feedback shift register. Each channel of audio has varying levels of decay, which gradually pulls the amplitude of the square wave lower.
+            </p>
+
+            <h4>Display</h4>
+            <p class="project-description">
+                The software implements the function of displaying a graphical video output to a display using a data connection to a basic VGA controller implemented on a DE10-LITE FPGA board. The board controls the timing and horizontal and vertical sync required for a 640 x 480 resolution VGA interface. To reduce the memory usage, we save the pixel values in an array of 320 x 240 memory, with two bits of color information per pixel. This results in only 57.6 kB of memory required to store all pixel values. The results of the VGA controller’s horizontal sync, vertical sync, and color data output can be seen in the following images.
+            </p>
+            <div class="text-center">
+                <img src="assets/images/ddl_vsync.png">
+                <img src="assets/images/ddl_hsync.png">
+                <img src="assets/images/ddl_colordataline.png">
+            </div>
+            <p></p>
+            <h4>UART Communications</h4>
+            <p class="project-description">
+                To communicate from the LPC176 to the DE10-LITE FPGA board, we implemented a UART interface running at 900,000 baud rate. 
+                An example UART transmission can be seen in the oscilloscope screen capture below. The board receives 8-bit samples from the LPC1769 to indicate the position of a rectangle to draw in the memory. The bytes transmitted are in series. The first byte sent is an indicator of 0xFF to start the transaction. Following, the initial x position, final x position, initial y position, final y position, and the 6 bit color information are sent to the DE10-lite board through a GPIO input pin, which then has a UART receiver and decoder to write the received values as blocks into the board’s memory.             </p>
+            <div class="text-center">
+                <img src="assets/images/ddl_uart.png" alt="UART Oscilloscope Result">
+            </div>
+            <h4>Memory Buffering</h4>
+            <p class="project-description">
+                The key to achieving seamless data handling and display was the implementation of a memory buffer onboard the FPGA. This component of the system was responsible for storing incoming data from the UART communication, then outputting it via the VGA communication protocol to the display.
+            </p>
+            <p></p>
+            <h2> Hardware Description </h2>
+            <p class="project-description">
+                Our audio hardware uses an audio amplifier connected to a speaker. We wired our PlayStation2 Dance Pad with an SPI connection to the LPC1769 with SPI IN Command into pin 11, SPI OUT Data into pin 12, Clock into pin 13, and Attention into pin 15. The Acknowledge connection as well as the vibration motor connection were not needed. A pull-up resistor value of 1k ohms for the Data connection of the SPI was needed due to an open collector output of the lines, which cannot drive voltages.
+            </p> <!--Our connection wires of the PlayStation2 Dance Pad were not color coded properly as it was not the standardized dance pad. The only difference of our connections compared to the standardized dance pad connections was that the ground and the vibration motors were switched.-->
+            <div class="text-center">
+                <img src="assets/images/ddl_fullschematic.png">
+            </div>
+            <p class="project-description">
+                For our VGA display output, a jumper wire was used to connect to the DE10-Lite GPIO[1] pin and another jumper wire was used to connect the grounds between the DE10-Lite and the LPC1769. The VGA connector on the DE10-Lite provides an interface for analog VGA output. We wired our display to the connector on the end of this board. The pins necessary for basic VGA output that were controlled by our DE10-Lite VGA controller can be seen in the image below.
+            </p> 
+            <div class="text-center">
+                <img src="assets/images/ddl_vgapins.png">
+            </div>
+            <p class="project-description">
+                For the audio amplifier circuit, we followed a standard application circuit from the NJM2113 data sheet, but we replaced the capacitor C1 with a 100uF capacitor instead of a 1.0uF capacitor in order to improve power supply rejection ratio and used a C2 of 0.1uF instead of 5uF.
+            </p>
+            <p class="project-description"> 
+                Some of our resulting VGA display and final circuit can be seen in the images below:
+            </p>
+            <div class="text-center">
+            <img src="assets/images/ddl_screen.png">
+            <img src="assets/images/ddl_screen2.png">
+            <img src="assets/images/ddl_breadboard_circuit.png">
+            </div>
         </div>
 
             
         </div>
         <!-- UART section -->
         <div class="col-12 mt-5">
-            <h2>UART Communications</h2>
-            <p class="project-description">
-                The first step of the project was to establish a UART (Universal Asynchronous Receiver-Transmitter) communication protocol on the DE10-Lite FPGA board. This enabled the system to transmit and receive serial data.
-            </p>
-            <img src="assets/img/uart_circuit.png" alt="UART Circuit" class="circuit-image">
-        </div>
-        <!-- VGA section -->
-        
-        <div class="col-12 mt-5">
-            <h2>VGA Communications</h2>
-            <p class="project-description">
-                In parallel, a VGA (Video Graphics Array) communication protocol was developed. The purpose of this was to enable the system to output video data to a display.
-            </p>
-            <img src="assets/img/vga_circuit.png" alt="VGA Circuit" class="circuit-image">
-        </div>
-        <!-- Memory Buffer section -->
-        <div class="col-12 mt-5">
-            <h2>Memory Buffering</h2>
-            <p class="project-description">
-                The key to achieving seamless data handling and display was the implementation of a memory buffer. This component of the system was responsible for storing incoming data from the UART communication, then outputting it via the VGA communication protocol to the display.
-            </p>
-            <img src="assets/img/memory_buffer_circuit.png" alt="Memory Buffer Circuit" class="circuit-image">
-        </div>
     </div>
 </div>
 
