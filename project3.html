@@ -43,32 +43,91 @@
         <div class="col-12 mt-4">
             <p class = "project-description"> <em> April 28, 2023 </em></p> 
             <p class = "project-description"> Bradlee Harrison </p> 
-
             <p class="project-description">
-                The project focuses on the design, simulation, layout, and verification of a Hamming (7,4) encoder and decoder circuit. Hamming (7,4) code is widely used in digital communication systems for error detection and correction.
+                Error correction is essential in many digital systems to ensure the integrity of data. Take, 
+                for instance, the case of transmitting a single character 'A'. If the character is encoded as an ASCII value, 
+                'A' corresponds to 0x41, and in binary 01000010. If a single bit error occurs during the transmission, 
+                and the received character is now 01010010, the receiver would interpret this character now as an ‘R.’ 
             </p>
+
             <div class="text-center">
-                <img src="assets/images/project-ic.jpg" alt="Design Circuit" class="circuit-image">
+                <img src="assets/images/transmit_a_error.png" alt="Diagram of Error in The Transmit of ASCII character 'A' causing a receive of 'R'">
             </div>
+            <p class="project-description">
+                This becomes a significant problem when applied at large scale and in noisy systems, where a valid string
+                of characters could become entirely indecipherable. The importance of each bit is even more significant when dealing 
+                with compressed files or data, where even a single bit can be important enough to render the information invalid.
+                <br/> <br/>
+                Within digital systems, <em>error-correcting codes</em> are used to reduce the probability of errors in data,
+                allowing for reliable transmission within noisy mediums. The idea behind an error-correcting code is to cleverly
+                add redundancy to a message, called <em> parity</em>, so that when an error occurs, the parity can be used to detect
+                and correct an error.
+                <br/><br/>
+                The <em>Hamming (7,4)</em> code is one such error-correcting code. The Hamming (7,4) code is a simple block code
+                (There are two types of error correcting codes, Block Codes and Convolutional Codes.) 
+                that adds 3 bits of redundancy to 4-bit blocks to create 7-bit blocks.  
+                <br/><br/>
+                This project focuses on the design, simulation, layout, and verification of a Hamming (7,4) encoder 
+                and decoder circuit. 
+            </p>
         </div>
         <!-- Design section -->
         <div class="col-12 mt-5">
-            <h2>Design</h2>
+            <h2>Description</h2>
             <p class="project-description">
-                The design phase involved creating the logic and architecture for both the Hamming (7,4) encoder and decoder. The encoder receives 4 bits of data and generates 3 parity bits, while the decoder uses these parity bits to detect and correct errors in the transmitted data.
+                In a Hamming (7,4) code, three parity bits are mapped and added to the block of data. 
+                The configuration can be seen below, where each circle has a parity bit chosen so that
+                the number of bits in each circle is odd.
             </p>
-          
+            <div class="text-center">
+                <h4> Hamming Diagram </h4>
+                <img src="assets/images/hamming_diagram.png" alt="Diagram of Hamming Encoder Parity Design">
+            </div>
+            <p class="project-description">
+                The parity choice can be expressed in logic equations:
+                <ul>
+                <li> P5 = XOR(D1, D2, D4) </li>
+                <li> P6 = XOR(D2, D3, D4) </li>
+                <li> P7 = XOR(D1, D3, D4) </li>
+                </ul> <br/>
+                When decoding, an error can be detected if the number of bits in any of the 
+                'circles' of the map in Figure 2 is odd. <br/>
+                This can also be expressed as:
+                <ul> 
+                <li> E1 = XOR(D1, D2, D4, P5) </li>
+                <li> E2 = XOR(D2, D3, D4, P6) </li>
+                <li> E3 = XOR(D1, D3, D4, P7) </li>
+                </ul> <br/>
+                After decoding, any single-bit error can be corrected based on the intersection of the erroneous 'circles', E1, E2, E3, corresponding to p5, p6, and p7 in Figure 2. This can be expressed as:
+                <ul>
+                <li> D1 = E1E2E3 XOR D1 </li>
+                <li> D2 = E1E2E3 XOR D2 </li> 
+                <li> D3 = E1E2E3 XOR D3 </li>
+                <li> D4 = E1E2E3 XOR D4 </li>
+                </ul> <br/>
+                where E1, E2, and E3 are the complements of E1, E2, and E3, respectively.
+            </p>
         </div>
         <!-- Simulation section -->
         <div class="col-12 mt-5">
             <h2>Simulation</h2>
             <p class="project-description">
-                Simulation tests were run to confirm the functionality of the design. This phase involved generating a test bench to simulate all possible input combinations and validate the encoder and decoder's ability to accurately handle data and errors.
+                Simulation tests were run to confirm the functionality of the design. 
+                This phase involved generating a test bench to simulate all possible 
+                input combinations and validate the encoder and decoder's ability to 
+                accurately handle data and errors.
             </p>
             <div class="text-center">
-                <img src="assets/images/simulation.png" alt="Final Circuit Simulation" class="circuit-image">
+                <h4> Full Logic-Level Circuit Simulation </h4>
+                <img src="assets/images/full logic-level circuit.png" alt="Full Logic Level Circuit" class="circuit-image">
+                <img src="assets/images/transmission error.png" alt="Example of Transmission Error with Error in Data Bit 2" class="circuit-image">
+                <img src="assets/images/full logic-level simulation.png" alt="Full Logic Level Circuit Simulation" class="circuit-image">
+
             </div>
         </div>
+
+        <!-- <img src="assets/images/hamming_circuit_simulation.png" alt="Final Circuit Simulation" class="circuit-image">
+        -->
         <!-- Layout section -->
         <div class="col-12 mt-5">
             <h2>Layout</h2>
@@ -76,17 +135,26 @@
                 In the layout phase, the digital schematic of the Hamming (7,4) encoder and decoder was translated into an actual IC design. This involved creating a physical layout that accurately represents the design schematic while optimizing for space and performance.
             </p>
             <div class="text-center">
-                <img src="assets/img/layout_circuit.png" alt="Layout Circuit" class="circuit-image">
+                <h4> Encoder Layout </h4>
+                <img src="assets/images/hamming_encoder_layout.png" alt="Layout Circuit" class="circuit-image">
+                <h4> Decoder Layout </h4>
+                <img src="assets/images/hamming_decoder_layout.png" alt="Layout Circuit" class="circuit-image">
             </div>
         </div>
         <!-- Verification section -->
         <div class="col-12 mt-5">
             <h2>Verification</h2>
             <p class="project-description">
-                The final phase of the project was verification, where the completed layout was checked against the original design and simulations. This was done through a process called Layout vs Schematic (LVS) to ensure that the layout accurately represented the schematic design.
+                The final phase of the project was verification, where the completed layout was checked against the original design and simulations.
+                This was done using a software tool called Calibre. Calibre was used to run a Design Rule Check (DRC) to ensure that
+                the layout design is feasible. Calibre was also used to perfrom a Layout vs Schematic (LVS) check to ensure that the
+                layout accurately represented the schematic design.
             </p>
             <div class="text-center">
-            <img src="assets/img/verification_circuit.png" alt="Verification Circuit" class="circuit-image">
+            <h4> Encoder and Decoder DRC and LVS successful </h4>
+            <img src="assets/images/Encoder Verification.png" alt="Encoder Verification Check" class="circuit-image">
+            <img src="assets/images/Decoder Verification.png" alt="Encoder Verification Check" class="circuit-image">
+
             </div>
         </div>
     </div>
