@@ -43,33 +43,139 @@
         </div>
         <div class="col-12 mt-4">
             <p class="project-description">
-                This project delves into the complex issue of blind quality assessment of stereo images. By leveraging the tools of Fourier analysis, the Gabor transform, and luminance and contrast metrics, I developed innovative techniques to evaluate the quality of stereo images.
-            </p>
+                
+                <h2> Background </h2>
+
+
+                <h6> Image Quality Assessment </h6>
+                The idea of an objective image quality assessment 
+                has been an ongoing problem in image processing. A metric 
+                that can define an objective quality of an image is very 
+                convenient to measure useful properties of an image quickly 
+                and effectively. 
+                <br/><br/>
+                This type of analysis can be used to 
+                optimize and benchmark the performance of an assortment 
+                of algorithms and image processing methods in the field of 
+                digital image processing. Unfortunately, image quality 
+                assessment is a very difficult problem to solve, and many 
+                attempts at solving image quality assessment result in 
+                statistically indistinguishable results.
+                <br/><br/>
+                <h6> Stereo Imaging </h6>
+                Stereoscopic imaging uses multiple perspectives of a single scene, giving it an 
+                additional ability to detect the distance between the imaging 
+                device and the imaged object. Using stereoscopic imaging can 
+                perform at high levels in object detection, ranging, and 
+                computer vision tasks within a wide variety of applications. 
+                <br/><br/>
+                One prominent example is in autonomous vehicles, where stereo cameras 
+                can be used improve the detection capabilities of a self-driving vehicle.
+                <a href="https://github.com/UZ-SLAMLab/ORB_SLAM3">ORB-SLAM3</a> is one example
+                of an open-source library for this use case, which includes stereo capabilities.
+                <br/><br/>
+                <h4> Problem </h4>
+                The goal of this project is to develop a blind image quality assessment algorithm
+                for use within stereoscopic images based on natural statistics 
+                found within the composition of the stereo images.
+
+                For this project, I examined the background of stereoscopic 
+                imaging and analyzed metrics of luminance and spectral characeristics
+                with the goal of estimating visual quality. 
+                <br/><br/>
+                I used the 
+                <a href="https://ivc.uwaterloo.ca/database/3DIQA.html"> Waterloo IVC 3D Image Quality Database </a>
+                 to obtain stereo images and image quality information. This dataset contains high quality stereo 
+                image pairs, some of which are subject to symmetric or asymmetric distortions. Each image pair is annotated with 
+                a mean-opinion-score (MOS) gathered from subjective human ratings. 
+                <br/> <br/>
+
+                 </p>
         </div>
-        <!-- Fourier Analysis section -->
         <div class="col-12 mt-5">
+            <h2>Dataset</h2>
+            <p class="project-description">
+                I first examined and qualified stereo images using 
+                MATLAB. I based this work using the publications and 
+                images provided by the Waterloo IVC 3D Image Quality 
+                Database.
+                <br/><br/>
+                The Waterloo IVC 3D Image Quality Database
+                Phase II is a database with over 460 stereoscopic image 
+                pairs that have been made from ten very high-quality 
+                stereoscopic images, with varying amounts of distortion, 
+                including asymmetric distortions between the stereo image 
+                pairs.
+               <br/><br/>
+
+            </p>
+            <div class="text-center">
+                <img src="assets/images/project_stereo.jpg" alt="Sample Image from Waterloo IVC 3D IQA Database" class="image-quality">
+            </div>
             <h2>Fourier Analysis</h2>
             <p class="project-description">
-                Fourier analysis was the first method I utilized for assessing the quality of stereo images. It involved analyzing the frequency components of the images and comparing the differences to determine quality discrepancies.
+                Fourier analysis was the first method I utilized for assessing the quality of stereo images. 
+                It involves analyzing the frequency components of the images and comparing the mean-squared error
+                differences between the FFTs of the left and right image pairs to determine quality discrepancies.
             </p>
-            <img src="assets/images/project_stereo.jpg" alt="Fourier Analysis" class="image-quality">
         </div>
         <!-- Gabor Transform section -->
         <div class="col-12 mt-5">
             <h2>Gabor Transform</h2>
             <p class="project-description">
-                Next, I employed the Gabor transform, a technique used to analyze the spatial frequency content in localized regions of the stereo images. This gave us further insights into localized discrepancies and details that might not be noticeable at a global level.
+                Next, I employed the Gabor transform, a technique used to analyze the spatial frequency content in localized regions of the stereo images. This gave further insights into localized discrepancies and details that might not be noticeable at a global level.
             </p>
+            <div class="text-center">
+                <img src="assets/images/Original vs Gabor Filtered.png" alt="Original Image Compared to Gabor Filtered Image" class="image-quality">
+            </div>
+            <p class="project-description">
+                A filter bank of sixteen Gabor filters was chosen with 
+                wavelengths 𝜆 = 4,8,16 and orientations 𝜃 = 0,30,60 as 
+                seen in Figures 3 and 4.
+                After the image was filtered by several Gabor filters, I 
+                took local sums of the Gabor filtered image and calculated 
+                the sum of all the values in the Gabor filtered image, divided 
+                by a scaling factor. From a set of 100 sample images from 
+                the IVC 3D Image Database, I found that this total 
+                fit a parabolic curve with an R2 value of 0.10, indicating a 
+                mild association. The association between the MOS and this 
+                metric can be seen in the graph below.
+            </p>
+            <div class="text-center">
             <img src="assets/images/Sixteen Gabor Filters.png" alt="Gabor Transform" class="image-quality">
-            <img src="assets/images/Original vs Gabor Filtered.png" alt="Original Image Compared to Gabor Filtered Image" class="image-quality">
+            <img src="assets/images/mos_vs_gabor.jpg" alt="Plot of MOS vs Gabor Coefficients, the curve fits a quadratic with an R^2 of 0.1011" class="image-quality">
+            </div>
         </div>
         <!-- Luminance and Contrast Metrics section -->
         <div class="col-12 mt-5">
             <h2>Luminance and Contrast Metrics</h2>
             <p class="project-description">
-                Lastly, I used luminance and contrast metrics to measure the perceived brightness and contrast in different parts of the stereo images. This alloId us to account for perceptual aspects of visual quality assessment, completing a comprehensive evaluation of the stereo image quality.
+                Lastly, I used luminance and contrast metrics to measure the perceived brightness and contrast in different parts of the stereo images. This accounts for perceptual aspects of visual quality assessment, completing a comprehensive evaluation of the stereo image quality.
             </p>
-            <img src="assets/img/luminance_contrast.png" alt="Luminance and Contrast Metrics" class="image-quality">
+            <div class="text-center">
+            <img src="assets/images/mos_vs_luminance.jpg" alt="Plot of MOS vs Luminance Calculation, the curve fits a linear with an R^2 of 0.1569" class="image-quality">
+            </div>
+        </div>
+
+        <div class="col-12 mt-5">
+            <h2> Results </h2>
+            <p class="project-description">
+                Ultimately, the resulting algorithm for blindly calculating the image quality had only a minor association with the 
+                final image. Below is a comparison between 50 images for different image quality evaluators. 
+                <br/><br/>
+                First, the Naturalness Image Quality Evaluator: <br/>
+                <img src="assets/images/mos_vs_niqe.jpg" alt="Plot of MOS vs NIQE Calculation, the curve fits a linear with an R^2 of 0.1569" class="image-quality">
+
+                <br/><br/>
+                Next, the Perception-Based Image Quality Evaluator: <br/>
+                <img src="assets/images/mos_vs_piqe.jpg" alt="Plot of MOS vs PIQE Calculation, the curve fits a linear with an R^2 of 0.1569" class="image-quality">
+
+                <br/><br/>
+                Finally, the evaluator created by averaging the statistic from the resulting algorithm: <br/>
+                <img src="assets/images/mos_vs_combination.jpg" alt="Plot of MOS vs Final Combination Calculation, the curve fits a linear with an R^2 of 0.1569" class="image-quality">
+
+            </p>
+            </p>
         </div>
     </div>
 </div>

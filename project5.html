@@ -41,33 +41,55 @@
             <h1 class="display-4 text-center">Passive Radar Signal Processing Project</h1>
         </div>
         <div class="col-12 mt-4">
+            <h2> Description </h2>
             <p class="project-description">
-                This project uses passive radar techniques to detect and track aerial targets. Instead of relying on conventional radar systems, commercial FM radio stations are leveraged as illuminators of opportunity.
+                The objective of this project is to explore the steps of passive radar signal processing. A passive radar, as described by [1], is a radar that relies on a transmitter external to its own system. This kind of radar can be called passive bistatic radar, passive covert radar, or passive coherent location.
+                Passive radar can have several applications. Some uses for short range passive radar include detecting vehicles or smuggler drones in border areas detecting flying objects in the vicinity of small airports [2]                 
             </p>
-        </div>
-        <!-- Detection section -->
-        <div class="col-12 mt-5">
-            <h2>Detection</h2>
+            <h2> Illuminators </h2>
             <p class="project-description">
-                The detection process involved processing the signals received from the FM radio stations. By analyzing these signals, the system could detect the presence of aerial targets within range.
+                Because passive radar does not generate its own waveform, a passive radar system relies on another transmitter to provide the signal source. This is called an illuminator of opportunity [1].
+               <br/><br/>
+                Examples of potential illuminators of opportunity used in passive radar include:
             </p>
-            <img src="assets/img/detection.png" alt="Detection Process" class="radar-image">
-        </div>
-        <!-- Tracking section -->
-        <div class="col-12 mt-5">
-            <h2>Tracking</h2>
             <p class="project-description">
-                Once a target was detected, the next step was tracking. Through advanced signal processing techniques, the system was capable of monitoring the movement and trajectory of the detected targets.
+                <ul>
+                <li>Broadcast stations: FM Radio [3] [4], ATSC [5], DAB/DVB-T [6][7] </li>
+                <li>Cellular networks: 3G [8], 4G [9], 5G [2] </li>
+                <li>Wi-Fi: 2.4GHz and 5GHz [10] </li>
+                <li>Satellite systems: GPS [11], GLONASS, Galileo [12] </li>
+                </ul>
             </p>
-            <img src="assets/img/tracking.png" alt="Tracking Process" class="radar-image">
+            <p class="project-description">
+                When using an illuminator of opportunity, typically a dedicated reference receiver channel is required in addition to the surveillance receiver because the transmitted signal is not known beforehand, but there are cases in which the original signal can be reconstructed, especially when using digital transmissions [12].
+                <br/><br/>
+                DAB Digital Audio and DVB-T Digital Television are common illuminators of opportunity used in passive radar [1]. A unique property of working with digital signals such as DVB-T and ATSC is that it is possible to obtain the reference signal without having a separate receiving channel for this purpose by decoding the bitstream and remodulating/synthesizing it back [5]. As a result, a passive radar system can function using only a single channel receiver. However, in the case of the 5G standard, it is not possible. [2]
+                <br/><br/>
+                Cellular networks such as 3G, 4G, and 5G can also be examined for passive Radar. 5G passive radar is currently only theoretical and no systems exist yet. Challenges emerge due to 5G transmissions being content-dependent, but there is a possibility of using the 5G periodic synchronization signal block for passive radar operation when the 5G data transmission is inactive [2]
+            </p>
+            <h2>Cross-Correlation</h2>
+            <p class="project-description">
+                Cross-correlation is a popular method for passive radar target detection [13]. In cross-correlation based detection, signals from two sources are correlated: a surveillance antenna based on the target echo, and a reference antenna signal based on the original signal transmitted. 
+                The cross-ambiguity function (CAF) is the standard process for calculating the time-delay of arrival between signals and is necessary for passive radar systems to detect and locate targets. There are many possible algorithms for calculating the cross-ambiguity function, including different types of windowing, decimation, doppler shift, and sampling rates [13].  
+            </p>    
+            <h2>Clutter Filtering</h2>
+            <p class="project-description">
+            Various clutter removal algorithms exist with tradeoffs between computational complexity, efficacy, and difficulty of implementation. Clutter filtering algorithms can be iterative, running on iterations of previous processing intervals and adapting to the measurements over time. These methods include the Least Mean Squares and Normalized Least Mean Squares, Recursive Least Squares, and Least Square Lattice Filters [1]. Clutter filtering methods can also be block-based, such as the Least Squares Matrix solution, also known as the Extensive Cancellation Algorithm [1]. 
+            </p>
+            <h2> Localization and Target Tracking</h2>
+            <p class="project-description"> In passive radar, due to the bistatic nature, localization and target tracking is more complicated than in active radar [14]. The time delay measured in passive radar corresponds to the bistatic range, which is the difference between the path that the signal travels. For the surveillance signal, the signal travels from the transmitter to the target and back to the receiver. For the reference signal, the signal travels from the transmitter to the receiver. These two positions between the transmitter and receiver are the foci of an ellipse of possible locations [12], which creates nonlinear behavior and uncertainties when applied to object localization and tracking. Issues such as ghost targets can appear due to potential ambiguities and false alarms [14]. Nonetheless, localization and target tracking approaches can use methods such as the Extended Kalman Filter to model motion and locate objects [14].
+            </p>
         </div>
         <!-- Results section -->
         <div class="col-12 mt-5">
             <h2>Results</h2>
             <p class="project-description">
-                The project successfully demonstrated that passive radar systems can effectively detect and track aerial targets using signals from commercial FM radio stations, paving the way for more cost-effective and stealthy radar systems.
+                The project successfully demonstrated that clutter-filtering algorithms can sufficiently reduce noise in 
+                passive radar systems through a simulated target and reception using real recorded FM radio waveforms. 
             </p>
-            <img src="assets/images/project-radar.jpg" alt="Results" class="radar-image">
+            <div class="text-center">
+                <img src="assets/images/project-radar.jpg" alt="Results" class="radar-image">
+            </div>
         </div>
     </div>
 </div>
