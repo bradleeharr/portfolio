@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleDiv = document.createElement('div');
     titleDiv.id = 'titleDiv';
 
-    const totalCells = 100000;
+    const totalCells = 200000;
 
     let canvasWidth = container.clientWidth;
     let canvasHeight = container.clientHeight;
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let stopPopTime = 2;
     let resetTime = 250;
     let dePopTime = 60;
-    let randAmt = 0.3;
+    let randAmt = 0.05;
     // Set canvas size to match the container
     canvas.width = container.clientWidth;
     canvas.height = container.clientHeight;
@@ -100,10 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (updateCounter < stopPopTime) {
                     let random_num = Math.random();
                     if (y > 0) nextGrid[y-1][columnToUpdate] |= (random_num < 0.05);
-                    if (columnToUpdate < columnsToUpdate) nextGrid[y][columnToUpdate+1] |= (random_num < 0.01);
-                    if (columnToUpdate+1 < columnsToUpdate) nextGrid[y][columnToUpdate+2] |= (random_num < 0.007);
-                    if (columnToUpdate+2 < columnsToUpdate) nextGrid[y][columnToUpdate+3] |= (random_num < 0.006);
-                    if (columnToUpdate+3 < columnsToUpdate) nextGrid[y][columnToUpdate+4] |= (random_num < 0.9);
+                    if (columnToUpdate < columnsToUpdate) nextGrid[y][columnToUpdate+1] |= (random_num < 0.005);
+                    if (columnToUpdate+1 < columnsToUpdate) nextGrid[y][columnToUpdate+2] |= (random_num < 0.005);
+                    if (columnToUpdate+2 < columnsToUpdate) nextGrid[y][columnToUpdate+3] |= (random_num < 0.004);
+                    if (columnToUpdate+3 < columnsToUpdate) nextGrid[y][columnToUpdate+4] |= (random_num < 0.6);
                 }
                 if (updateCounter > resetTime - dePopTime) {
                     let random_num = Math.random();

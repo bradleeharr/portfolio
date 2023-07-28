@@ -35,66 +35,40 @@
     <!--<a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>-->
     <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#section3">About Me</a></li>
-        <!--<li class="has-submenu"><a href="#section3">About Me</a>
-          <ul class="sub-menu">
-            <li><a href="#section2">Who am I?</a></li>
-            <li><a href="#section3">What do I do?</a></li>
-            <li><a href="#section3">Interests?</a></li>
-          </ul>
-        </li> -->
-        <li><a href="index.html">Contact</a></li>
+        <li><button onclick="window.open('index.html')">Home</a></li>
         <li><button onclick="window.open('assets/resume.pdf');">Resume</a></li>
 
       </ul>
     </nav>
   </header>
-  <!-- ***** Main Banner Area Start ***** -->
- 
-  <script src="assets/js/vortex.js"></script>
 
-  <section class="section main-banner" id="top" data-section="section1">
-      <div id="bg-video"></div>
-      <div id="title"></div>
-      <div class="video-overlay header-text">
-          <div class="caption">
-              <h6>Bradlee Harrison</h6>
-              <h2><em>My Work Experience</em></h2>
-              <div class="main-button">
-                  <div class="scroll-to-section"><a href="#section3">See more</a></div>
-              </div>
-          </div>
-      </div>
-    
-  </section>
-  <!-- ***** Main Banner Area End ***** -->
-
-
-  
 
   <section class="section hello" data-section="section3">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="continer centerIt">
-              <h4><em>University of Oklahoma </em> Graduate Research Assistant</h4>            <br/>
-              <p>Perform research on advanced research projects. <br/> <br/>  
-               <br/> <br/> 
-               <br/> <br/> </p>
-          </div>
-          <div class="continer centerIt">
-            <h4><em>PCI Energy Solutions</em> Software Analyst Intern    </h4>            <br/>
-            <p>PCI supports energy markets using software. <br/> <br/>  
-             <br/> <br/> 
-             <br/> <br/> 
-            </p>
-          </div>
-          <div class="continer centerIt">
-            <h4><em>76th Software Engineering Group </em> Engineer Trainee </h4><br/>
-            <p>The 76th Software Engineering Group, located within Tinker Air Force Base in Oklahoma. <br/> <br/>  
-             <br/> <br/> 
-             <br/> <br/> 
+            <h4>My Work Experience</h4>
+            <h4><em>University of Oklahoma </em> Graduate Research Assistant</h4>
+            <p> Feb 2023 - Present </p>
+            <p>As a graduate research assistant, I perform research on special projects
+            at the University of Oklahoma's Advanced Radar Research Center. </p>
+
+
+            <h4><em>PCI Energy Solutions</em> Software Analyst Intern    </h4>
+            <p> May 2022 - Feb 2023 </p>
+            <p>PCI supports energy markets using software. </p>
+            <p> At PCI, I collaborated with a team of 10+ professionals to develop and deploy 30+ software features for energy independent system operators using proficiency in Java and SQL. </p>
+            <p> On this team, we engaged in Agile methodologies, fostering team collaboration. My active involvement in scrum meetings and sprint planning ensured 100% on-time or early completion of 20+ sprints throughout my employment. </p>
+            <p> I was able to lead the analysis and resolution of critical defects in real time energy trading results, enhancing system reliability and ensuring zero downtime by verifying REST API endpoint results and correcting code requesting unit generation schedules from the API. </p>
+            <p> I also undertook the project of orchestrating the management and synchronization of a large codebase with Git and SVN, enhancing branching strategies leading to a decrease in merge conflicts by about 40%. </p>
+
+            <h4><em>76th Software Engineering Group </em> Engineering Intern </h4><br/>
+            <p> Jun 2021 - Aug 2021 </p>
+            <p>The 76th Software Engineering Group is an extremely diverse group of engineers
+               with the mission of providing service for the Air Force warfighters. </p>
+            <p> As part of the 76th SWEG, I contributed to software maintenance and improvement for the Air Force Civilian Service, using C#, Unity, and TestComplete to develop tests, features, and resolve bugs for virtual mission control, flight, and maintenance software, enhancing system performance and reliability. </p>
+            <p> One project I performed in a two-person team was developing and implementing an automated test program for a simulated circuit board, achieving a 95% success rate in identifying and troubleshooting faults through performance and diagnostic testing methods in our first learning project. </p>
             </p>
           </div>
         </div>
@@ -187,52 +161,6 @@
     </div>
   </section>-->
 
-  <section class="section contact" data-section="section6">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h1> Contact Me  </h1>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <h4> Connect with me on: </h4>
-          <ul>
-            <li> <a > LinkedIn:  </a> <em> <a href=https://www.linkedin.com/in/bradlee-harrison-584371206/> Bradlee Harrison </a> </em> </li>
-            <li> <a > GitHub: </a> <em> <a href=https://github.com/bradleeharr/> bradleeharr </a> </em> </li>
-            <li> <a > Email:</a> <em> <a href="mailto:bradlee.harrison22@gmail.com?subject=Website&body=Hi%20Bradlee,%3F"> bradlee.harrison22@gmail.com</a> </em> </li>
-          </ul>
-          <br/>
-          <h4> Send a Message: </h4> 
-          <br/>
-          <form id="contact" action="" method="post">
-            <div class="row">
-              <div class="col-md-6">
-                  <fieldset>
-                    <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required="">
-                  </fieldset>
-                </div>
-                <div class="col-md-6">
-                  <fieldset>
-                    <input name="email" type="text" class="form-control" id="email" placeholder="Your Email" required="">
-                  </fieldset>
-                </div>
-              <div class="col-md-12">
-                <fieldset>
-                  <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
-                </fieldset>
-              </div>
-              <div class="col-md-12">
-                <fieldset>
-                  <button type="submit" id="form-submit" class="button">Send Message Now</button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
   <!-- <div class="col-md-12">
     <div id="map">
       <li> <a href="" >Lichess </a> </li> <br/>
