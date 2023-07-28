@@ -59,20 +59,30 @@
                 Image: LABcrabs 27 January 2019 | DanceDance Revolution - A machine in Oakville, Ontario, Canada | <a href=https://commons.wikimedia.org/wiki/File:DanceDanceRevolution_White_Machine_with_DDR_A_installed.png> Source </a>
                 <br/> licensed under the <a href=https://en.wikipedia.org/wiki/en:Creative_Commons> Creative Commons Attribution-Share Alike 4.0 International license. </a> No changes were made.
             </p>
-            <h4> Capabilities </h4>
+            <h4> Design </h4>
             <p class="project-description">
-                We developed a basic dance pad game using an LPC1769 microcontroller and a DE-10 Lite FPGA.
+                We developed a basic dance pad game using an LPC1769 microcontroller and a DE-10 Lite FPGA. We provide human interfaces with a serial PlayStation 2 
+                Dance Pad controller, a speaker output, and a VGA monitor.
             </p>
+            <h6> Microcontroller </h6>
             <p class="project-description"> 
-                We provide human interfaces with a serial PlayStation 2 
-                Dance Pad controller, a speaker output, and a VGA monitor. The microcontroller handles the user 
+                 The microcontroller handles the user 
                 input from the dance pad, the game state logic, and the music output logic. The microcontroller
                 communicates game state logic with the FPGA using a Universal Asynchronous Receiver/Transmitter 
-                (UART) interface. The FPGA handles the processing 
-
-                The display is output with a DE-15 VGA Connector connected to the FPGA 
-                with the transmitter connection from the microcontroller to the GPIO pin.
+                (UART) interface. 
             </p>
+            <h6> FPGA </h6>
+            <p class="project-description">
+                The FPGA handles the processing of storing the display data, buffering it in its RAM
+                and outputting the display information along with a vertical sync and horizontal sync to maintain
+                the timing constraints of the VGA standard.
+            </p>
+            <div class="text-center">
+                <h6> A block diagram of the system </h6>
+                <img src="assets/images/DDLBlockDiagram.drawio (1).png" alt="Block Diagram of Dance Pad communicating with SPI to LPC1769 Microcontroller, Audio Amplifier used to get audio output from the LPC1769 Microcontroller, UART used to communicate from the LPC1769 Microcontroller to the DE10-Lite FPGA. The DE10-Lite FPGA then outputs video data over VGA to a display monitor.">
+                <br/><br/>
+            </div>
+            <h4> Capabilities </h4>
             <p class="project-description"> 
                 The microcontroller is capable of playing two different songs which are programmed into it. 
                 The song, tempo, and volume can be configured using inputs on the dance pad. The microcontroller communicates over UART the X and Y positions of 
@@ -80,7 +90,7 @@
             </p>
             <h6> Song Selection and Start Process  </h6>
             <ul> 
-                <li> Turn on the microcontroller and compile the main code. </li>
+                <li> Turn on the microcontroller and FPGA </li>
                 <li> Press the SELECT button to select the song from two different tracks. </li>
                 <li> Press the TRIANGLE button to change from display mode to music selection mode. </li>
                     <ul>
@@ -93,19 +103,17 @@
                 <li> Press the RIGHT arrow to increase the music tempo. </li> 
                 <li> Press the START button to start the song selected. </li>
             </ul>
-            <br/>
+            <br/> <br/>
             <h2> Software Description </h2>
-            <p class="project-description">
-                The software implements the primary function of playing music using the 
-                Digital-to-Analog Converter present on the LPC1769. 
-            </p>
             <h4> Input </h4>
             <p class="project-description">
                 The LPC1769 microcontroller receives digital input from a PlayStation 2
                 Dance Dance Revolution Regular Dance Pad. This dance pad uses a serial interface to
-                send input signals. Using an SPI connection, the LPC1769 functions as the controller, 
-                and the dance pad functions as a target. The LPC1769 polls the dance pad using a 
-                series of command words and receives 5 bytes of data from the dance pad. The 4th 
+                send input signals. Using an SPI connection, the LPC1769 functions as the "controller", 
+                and the dance pad functions as a "target". What this means is that the LPC1769 uses a 
+                series of command words to "poll" the pads it is connected to. 
+                <br/><br/>
+                After polling the pad, it receives 5 bytes of data. The 4th 
                 and 5th bytes of data contain the information for the buttons pressed on the dance 
                 pad, including the left, up, right, down arrows, start, select and the cross, circle,
                 square, and triangle buttons. Based on the inputs from the dance pad, we save the state 
@@ -114,48 +122,60 @@
             </p>
             <h4> Audio </h4>
             <p class="project-description">
+                The music is generated using the 
+                Digital-to-Analog Converter present on the LPC1769, which is then amplified using an audio amplifier and sent to a speaker. 
+            </p>
+            <p class="project-description">
                 When an input switch is triggered to begin the audio playback, we start a timer which controls 
                 all of the audio timings for the audio output, beginning the audio playback.
                 Using other inputs, the volume can also be controlled using the X and Circle pads of the controller mat as well as the Left and Right pads for the tempo of the music.
             </p>
             <p class="project-description">
-                A variety of different musical notes are created by pulsing square waves at varying frequencies. To set the list of notes that will be output when the music is played, we created two arrays of notes and defined each note with a set amount of time to wait in between pulses. Multiple channels are able to play at the same time, generating harmonies and chords. A percussion sound is generated using a linear feedback shift register. Each channel of audio has varying levels of decay, which gradually pulls the amplitude of the square wave lower.
+                Different musical notes are created by pulsing square waves at varying frequencies. To set the list of notes that will be output when the music is played, we created two arrays of notes and defined each note with a set amount of time to wait in between pulses.
+                Up to 4 channels are able to play at the same time, each with 8-bit precision, generating harmonies and chords. A percussion sound is generated using a linear feedback shift register. Each channel of audio also can have set levels of decay, which gradually pulls the amplitude of the square wave lower.
             </p>
 
             <h4>Display</h4>
             <p class="project-description">
-                The software implements the function of displaying a graphical video output to a display using a data connection to a basic VGA controller implemented on a DE10-LITE FPGA board. The board controls the timing and horizontal and vertical sync required for a 640 x 480 resolution VGA interface. To reduce the memory usage, we save the pixel values in an array of 320 x 240 memory, with two bits of color information per pixel. This results in only 57.6 kB of memory required to store all pixel values. The results of the VGA controller’s horizontal sync, vertical sync, and color data output can be seen in the following images.
+                The graphical video output is displayed using a data connection to a basic VGA controller implemented on a DE10-LITE FPGA board. The board controls the timing and horizontal and vertical sync required for a 640 x 480 resolution VGA interface. To reduce the memory usage, we save the pixel values in an array of 320 x 240 memory, with two bits of color information per pixel. This results in only 57.6 kB of memory required to store all pixel values. The results of the VGA controller’s horizontal sync, vertical sync, and color data output can be seen in the following images.
             </p>
             <div class="text-center">
                 <img src="assets/images/ddl_vsync.png">
                 <img src="assets/images/ddl_hsync.png">
                 <img src="assets/images/ddl_colordataline.png">
             </div>
+            <h4>Memory Buffering</h4>
+            <p class="project-description">
+                The key to achieving seamless data handling and display was the implementation of a memory buffer using the FPGA. This component of the system was responsible for storing incoming data from the UART communication, then outputting it via the VGA communication protocol to the display.
+            </p>
             <p></p>
             <h4>UART Communications</h4>
             <p class="project-description">
                 To communicate from the LPC176 to the DE10-LITE FPGA board, we implemented a UART interface running at 900,000 baud rate. 
                 An example UART transmission can be seen in the oscilloscope screen capture below. The board receives 8-bit samples from the LPC1769 to indicate the position of a rectangle to draw in the memory. The bytes transmitted are in series. The first byte sent is an indicator of 0xFF to start the transaction. Following, the initial x position, final x position, initial y position, final y position, and the 6 bit color information are sent to the DE10-lite board through a GPIO input pin, which then has a UART receiver and decoder to write the received values as blocks into the board’s memory.             </p>
             <div class="text-center">
+                <h6> Example UART Transaction </h6>
                 <img src="assets/images/ddl_uart.png" alt="UART Oscilloscope Result">
             </div>
-            <h4>Memory Buffering</h4>
-            <p class="project-description">
-                The key to achieving seamless data handling and display was the implementation of a memory buffer onboard the FPGA. This component of the system was responsible for storing incoming data from the UART communication, then outputting it via the VGA communication protocol to the display.
-            </p>
+
             <p></p>
+            <br/><br/>
             <h2> Hardware Description </h2>
             <p class="project-description">
                 Our audio hardware uses an audio amplifier connected to a speaker. We wired our PlayStation2 Dance Pad with an SPI connection to the LPC1769 with SPI IN Command into pin 11, SPI OUT Data into pin 12, Clock into pin 13, and Attention into pin 15. The Acknowledge connection as well as the vibration motor connection were not needed. A pull-up resistor value of 1k ohms for the Data connection of the SPI was needed due to an open collector output of the lines, which cannot drive voltages.
             </p> <!--Our connection wires of the PlayStation2 Dance Pad were not color coded properly as it was not the standardized dance pad. The only difference of our connections compared to the standardized dance pad connections was that the ground and the vibration motors were switched.-->
             <div class="text-center">
+                <h6> Hardware Schematic </h6>
                 <img src="assets/images/ddl_fullschematic.png">
             </div>
+            <br/><br/>
             <p class="project-description">
-                For our VGA display output, a jumper wire was used to connect to the DE10-Lite GPIO[1] pin and another jumper wire was used to connect the grounds between the DE10-Lite and the LPC1769. The VGA connector on the DE10-Lite provides an interface for analog VGA output. We wired our display to the connector on the end of this board. The pins necessary for basic VGA output that were controlled by our DE10-Lite VGA controller can be seen in the image below.
+                For our VGA display output, a jumper wire was used to connect to the DE10-Lite GPIO_[1] pin and another jumper wire was used to connect the grounds between the DE10-Lite and the LPC1769. The VGA connector on the DE10-Lite provides an interface for analog VGA output. We wired our display to the connector on the end of this board. The pins necessary for basic VGA output that were controlled by our DE10-Lite VGA controller can be seen in the image below.
             </p> 
             <div class="text-center">
+                <h6> DE15 VGA Pin Description </h6>
                 <img src="assets/images/ddl_vgapins.png">
+
             </div>
             <p class="project-description">
                 For the audio amplifier circuit, we followed a standard application circuit from the NJM2113 data sheet, but we replaced the capacitor C1 with a 100uF capacitor instead of a 1.0uF capacitor in order to improve power supply rejection ratio and used a C2 of 0.1uF instead of 5uF.
@@ -164,8 +184,11 @@
                 Some of our resulting VGA display and final circuit can be seen in the images below:
             </p>
             <div class="text-center">
+            <h6> Final Screen of a Game. Rectangles corresponding to directions on the pad must be input to increase the score on the bottom left</h6>
             <img src="assets/images/ddl_screen.png">
+            <h6> Test screen showing drawing of multiple rectangles for graphical output </h6>
             <img src="assets/images/ddl_screen2.png">
+            <h6> Final breadboarded circuit </h6>
             <img src="assets/images/ddl_breadboard_circuit.png">
             </div>
         </div>
