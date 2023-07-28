@@ -44,10 +44,9 @@
         <div class="col-12 mt-4">
             <p class = "project-description"> <em> December 15, 2022 </em></p> 
             <p class = "project-description"> <em> Bradlee Harrison </em> and <a href=https://www.linkedin.com/in/adam-tran-60a0b0268/> <em> Adam Tran </em></a>
-
             <p class="project-description">
                 The goal of our project was to emulate an arcade-style music rhythm 
-                game based on the music video game series Dance Dance Revolution. An 
+                game based on the music video game series <a href=https://www.ddrgame.com/> Dance Dance Revolution.</a> An 
                 example of this arcade game can be seen in the image below. The goal of the 
                 game is to tap arrows on the pad with the correct timing using your 
                 feet when prompted by arrows displayed on a screen. 
@@ -65,8 +64,13 @@
                 We developed a basic dance pad game using an LPC1769 microcontroller and a DE-10 Lite FPGA.
             </p>
             <p class="project-description"> 
-                This was performed by interfacing with a serial PlayStation 2 Dance Pad controller, a speaker output, and 
-                a VGA monitor. The display is output with a DE-15 VGA Connector connected to the FPGA 
+                We provide human interfaces with a serial PlayStation 2 
+                Dance Pad controller, a speaker output, and a VGA monitor. The microcontroller handles the user 
+                input from the dance pad, the game state logic, and the music output logic. The microcontroller
+                communicates game state logic with the FPGA using a Universal Asynchronous Receiver/Transmitter 
+                (UART) interface. The FPGA handles the processing 
+
+                The display is output with a DE-15 VGA Connector connected to the FPGA 
                 with the transmitter connection from the microcontroller to the GPIO pin.
             </p>
             <p class="project-description"> 
@@ -97,7 +101,7 @@
             </p>
             <h4> Input </h4>
             <p class="project-description">
-                The software implements the function of receiving digital input from a PlayStation 2
+                The LPC1769 microcontroller receives digital input from a PlayStation 2
                 Dance Dance Revolution Regular Dance Pad. This dance pad uses a serial interface to
                 send input signals. Using an SPI connection, the LPC1769 functions as the controller, 
                 and the dance pad functions as a target. The LPC1769 polls the dance pad using a 
