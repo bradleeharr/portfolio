@@ -39,18 +39,33 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-12">
-            <h1 class="display-4">A 100 kHz Amplitude Modulator Circuit With Basic Circuit Components</h1>
+            <h1 class="display-4">A Design and Implementation of a 100 kHz Amplitude Modulator Circuit Using Basic Components</h1>
         </div>
         <div class="col-12 mt-4">
             <p class = "project-description"> <em> May 22, 2022 </em></p>
             <p class = "project-description"> <em> Bradlee Harrison </em></p> 
 
+            <h2>Overview</h2>
             <p class="project-description">
-                The primary components involved in the process are a microphone, LM386 audio amplitifer, operational amplifier , 2N222A MOSFET transistor, a speaker, and resistors, inductors, and capacitors.
+                In today's world, efficient and effective communication systems are more necessary than ever before. 
+                Billions of devices communicate with each other in an interconnected network that   
+                dominates the natural sphere. WiFi routers, radio broadcasts, and weather radars are able to seamlessly transmit 
+                information across space and time. 
             </p>
-        </div>
-        <!-- Microphone section -->
-        <div class="col-12 mt-5">
+            <p class="project-description">
+                But how does it all work? 
+            </p>
+            <p class="project-description">
+                The short answer is only one word -- <em>"Modulation."</em> 
+            </p>
+            <p class="project-description">
+                The objective of this project was to gain an understanding of radio
+                communications by studying one specific type of modulation -- <em>Amplitude Modulation</em> (AM)
+            </p>
+            <h2>Materials</h2>
+            <p class="project-description">
+                The primary components involved in the process are a microphone, an LM386 audio amplifier, an operational amplifier, a 2N222A MOSFET transistor, a speaker, and passive elements such as resistors, inductors, and capacitors.            </p>
+            </p>
             <h2>Description</h2>
             <p class="project-description">
                 In this project, I designed a basic communication system consisting of a transmitter and
@@ -63,40 +78,41 @@
                     For a communication system, there are many possible<a href="https://en.wikipedia.org/wiki/Modulation">
                     modulation types. </a>
                     For the sake of simplicity, I designed an <a href="https://en.wikipedia.org/wiki/Amplitude_modulation">Amplitude Modulating (AM) </a> transmitter that performs <a href="https://en.wikipedia.org/wiki/Sideband">Double-Sideband</a> Large Carrier (DSB-LC) modulation.
-                                                                                                                                                                                       This transmitter takes an audio signal, mixes it with a modulating sinusoid, and adds a large high-frequency
-                                                                                                                                                                                       carrier to create a DSB-LC signal. Mixer circuits and summer circuits are important to design and configure
-                                                                                                                                                                                       throughout the scope of this project.
+                <p class="project-description">    
+                    This transmitter takes an audio signal, mixes it with a modulating sinusoid, and adds a large high-frequency
+                    carrier to create a DSB-LC signal. Mixer circuits and summer circuits are important to design and configure
+                    throughout the scope of this project.
+                </p>
 
-                <p class="project-description"> The signal will also have to be amplified to a
-                sufficiently large level for transmission. For this, an active filter between 150
-                to 15kHz (the range of normal human hearing) was necessary to design. </p>
+                <p class="project-description"> After modAulation, the signal will have to be amplified to a
+                sufficiently large level for transmission. For this, an amplifier was designed using a 2N222A MOSFET transistor. </p>
 
                 <h4> Receiver </h4>
                 <p class="project-description"> To receive this signal, I use an envelope detector consisting of a diode and
                     an RC circuit to recover the envelope of the DSB-LC signal, which contains
-                    the demodulated original signal. The received signal will have to be amplified
-                    from a smaller signal level, and an amplifier between the frequencies 150 Hz to
-                    15kHz will be necessary for a significant output to be detected. Finally, this
+                    the demodulated original signal. The received signal must be amplified from its initial small signal level,
+                    necessitating an amplifier effective within the audio frequencies of 150 Hz to 15 kHz. Finally, this
                     received signal must be output through a speaker in order to reproduce the sound
                     originally input into the transmitter. </p>
 
             <h2> Methods </h2>
             <p class="project-description">
-                Throughout the implementation of this project, I faced
-                many problems and found several interesting solutions. The first step the design
+                Throughout the implementation of this project, I encountered many challenges, which prompted several innovative solutions. 
+            </p>
+            <p class="project-description">
+                The first step in the design
                 was in creating a useful transmitter, capable of generating and modulating an audio
                 signal. For this transmitter, I first designed an astable 555-timer to generate
-                a test signal of a 1kHz square wave. This signal could be triggered with a
-                push-button connected to the reset pin.
+                a test signal of a 1kHz square wave. This signal could be manually triggered using a push-button connected to the reset pin.
             </p>
             <h4> 555 Timer Circuit to Generate Test Signal </h4>
             <p class ="text-center">
                 <img src="assets/images/555_Signal.png" alt="555-Timer Circuit to generate signal" class="circuit-image">
             </p>
-                <p class="project-description">
-                    Aside from the 555-timer signal for testing, a small electret microphone was also used as the input device, capturing audio
-                    signals from a headphone speaker that was placed next to it. Using the microphone, these analog signals are converted to electrical signals.
-                </p>
+            <p class="project-description">
+                Aside from the 555-timer signal for testing, a small electret microphone was also used as the input device, capturing audio
+                signals from a headphone speaker that was placed next to it. Using the microphone, these analog signals are converted to electrical signals.
+            </p>
 </div>
         <!-- Amplitude Modulator section -->
         <div class="col-12 mt-5">
@@ -132,7 +148,9 @@
         <div class="col-12 mt-5">
             <h2>Speaker</h2>
             <p class="project-description">
-                Finally, the demodulated signal is fed into an audio amplifier to ensure that it's strong enough to drive a speaker. The speaker converts the electrical signals back into audio signals, reproducing the original sound.
+                Finally, the demodulated signal is fed into an audio amplifier, which strengthens 
+                the signal enough to drive a speaker. The speaker then converts these electrical 
+                signals back into sound, effectively reproducing the original audio.
             </p>
             <p class="text-center">
                 <img src="assets/images/LM386_Setup.png" alt="Speaker Circuit" class="circuit-image">
@@ -142,14 +160,12 @@
         <div class="col12 mt5">
             <h2> Results </h2>
             <p class="project-description">
-                The resulting circuit was capable of transmitting and receiving the audio signals
-                over a very short distance. In order to increase the distance of the transmission,
-                an increase in the power of the transmitter would increase the distance that the
-                waves would transmit. However, because the carrier frequency I used, 100kHz,
-                is a lower frequency, there is a potential issue that the low frequency waves could
-                propogate over large distances. As a result, it was necessary to limit the power
-                to very-low wattage. The final circuit put together can be seen in the images below,
-                with the transmitter and receiver:
+                The resulting circuit successfully transmitted and received audio signals over a 
+                short distance. To increase the transmission distance, boosting the power of the 
+                transmitter would be required. However, the carrier frequency I used, 100kHz, could 
+                propagate over long distances due to its lower frequency nature, which necessitated 
+                a limitation on the power to very low wattage. The final circuit put together can 
+                be seen in the images below.
             </p>
             <h4 class="text-center"> Transmitter </h4>
             <p class="text-center">
