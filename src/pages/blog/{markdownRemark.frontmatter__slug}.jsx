@@ -8,14 +8,6 @@ export default function BlogPostTemplate({ data }) {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
 
-  /*useEffect(() => {
-    document.querySelectorAll("span.latex").forEach((block) => {
-      katex.render(block.textContent, block, {
-        throwOnError: false,
-      });
-    });
-  }, []); */
-
   return (
     <div className="blog-post-container">
       <div className="blog-post">
