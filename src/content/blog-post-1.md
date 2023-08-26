@@ -13,9 +13,6 @@ I moved on to using [**React**](https://react.dev/) which immediately was much c
 
 Though for the purpose of a blog, I still did not want to have to write HTML and CSS every time I wanted to write a short blurb. What I found as a solution was the ability to write posts in Markdown and then have them automatically formatted into a page. This feature is fairly easily able to be done through the React-based Framework [**Gatsby**](https://www.gatsbyjs.com/) and using their plugin [_gatsby-transformer-remark_](https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/)
 
-__Using Markdown Content in Gatsby should be easy.__
-
-
 A bonus feature that I found in Gatsby is the ability to easily use even LaTeX in Markdown directly through another plugin, [_gatsby-remark-katex_](https://www.gatsbyjs.com/plugins/gatsby-remark-katex/).
 
 
@@ -55,19 +52,29 @@ First, you should install the required runtime, Node.js:
 
 Download [Node.js](https://nodejs.org/en/download)
 
-Using npm, you should then be able to install React in an Administrator-level terminal:
+Using npm, install Gatsby globally:
 
-```npm install react```
+```npm install -g gatsby-cli```
 
-Using npm, also install Gatsby, KaTeX, and the necessary Gatsby plugins _gatsby-transformer-remark_ and _gatsby-remark-katex_:
+Now, create a project and install the necessary plugins KaTeX, _gatsby-transformer-remark_ and _gatsby-remark-katex_:
 
-```npm install gatsby gatsby-transformer-remark gatsby-remark-katex katex```
-
-You should also have a suitable text editor program, like [Visual Studio Code](https://code.visualstudio.com/).  
-* **2. Creating a Project**
 In a terminal, navigate to the directory you want to start a project in and enter:
 
 ```gatsby new projectname```
+
+Followed by
+
+```cd projectname```
+
+to move into the project directory.
+
+Now install _gatsby-transformer-remark_, _gatsby-remark-katex_, and katex:
+
+```npm install gatsby-source-filesystem```
+
+```npm install gatsby-transformer-remark gatsby-remark-katex katex```
+
+```npm install remark-math rehype-katex```
 
 Then, verify that the project starts correctly:
 
@@ -76,6 +83,7 @@ Then, verify that the project starts correctly:
 You should then be able to visit the sample page at http://localhost:8000/
 
 Now that a new gatsby project is set up, the next step is to edit the configuration files, add markdown pages, and create a javascript template: 
+You should have a suitable text editor program, like [Visual Studio Code](https://code.visualstudio.com/).  
 
 * **3. Configuring gatsby-config.js**
 The gatsby-config.js should be stored in the root of your new project directory. Edit this file
@@ -96,7 +104,7 @@ module.exports = {
     description: `Configuration with Remark and KaTeX.`,
     author: `@gatsbyjs`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
-  
+  },
   plugins: [
   {
       resolve: "gatsby-source-filesystem",
@@ -119,7 +127,6 @@ module.exports = {
     }
   },
   ]
-  }
 }
 ```
 * **4. Writing Markdown LaTeX**
@@ -179,6 +186,7 @@ export const pageQuery = graphql`
       }
     }
   }
+`
 ```
 * **6. Start Development Server**
 If the configuration is correct, you should now be able to run your development server again. In a terminal enter:

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Intro.css';
-
+import Navbar from '../components/Navbar'
 const Intro = () => {
     
     const [theme, setTheme] = useState('dark');  // default to dark theme
@@ -21,13 +21,9 @@ const Intro = () => {
 
   return (
     <div className="intro">
-        <div className="navbar">
-            <a href="#home">Home</a>
-            <a href="#blog">Blog</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+        <div>
+            <Navbar/>
         </div>
-
         <h1>Bradlee Harrison</h1>
         
         <div className="navigation">
