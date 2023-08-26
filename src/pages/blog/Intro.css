@@ -10,9 +10,16 @@ body, h1, h2, p, ul, li, a {
 .intro {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0rem;
+    padding: 1rem;
     color: #333;
     line-height: 1.6;
+}
+
+img {
+    max-width: 100px;
+    padding: 0;
+    margin: 0;
+    flex: 1
 }
 
 h1 {
@@ -28,26 +35,29 @@ h2 {
 p {
     font-size: 1rem;
     margin-bottom: 1rem;
+    max-width: 100%;
+    padding: 10px;
 }
 
-.navigation a, button {
+.navigation a {
     margin-right: 1rem;
     padding: 0.5rem 1rem;
     border: 1px solid #333;
     border-radius: 5px;
     transition: background-color 0.3s;
-    background-color: #33f;
+    background-color: #111;
 }
 
 .navigation a:hover, button:hover {
     background-color: #fff;
-    color: #00f;
+    color: #222;
+    
 }
 
 .profile-card {
     display: flex;
     align-items: center;
-    margin: 2rem 0;
+    margin: 1rem;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -55,7 +65,6 @@ p {
 
 .profile-card img {
     max-width: 150px;
-    border-right: 2px solid #eee;
     padding: 10px
 }
 
@@ -64,7 +73,7 @@ p {
 }
 
 .latest-posts, .skills-section, .contact-section {
-    margin: 2rem 0;
+    margin: 1rem 0;
     padding: 1rem;
     border-radius: 5px;
     background-color: #f9f9f9;
@@ -100,7 +109,7 @@ p {
 }
 
 .contact-section button:hover {
-    background-color: #555;
+    background-color: #f33;
 }
 
 footer {
@@ -160,7 +169,6 @@ footer a {
 .profile-card img {
     width: 100%;
     border-right: none;
-    border-bottom: 2px solid #eee;
 }
 
 /* Blog Post Cards */
@@ -181,7 +189,6 @@ footer a {
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
-    background-color: #fff;
     border-bottom: 1px solid #eee;
     z-index: 1000;
 }
@@ -196,6 +203,28 @@ footer a {
     color: #555;
 }
 
+/* Skills Section */
+.skills-section ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.skills-section li {
+    font-size: x-large;
+    flex: auto;
+    width: auto;
+    margin-right: 0.1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.1s;
+    background-color: var(--primary-bg-color);
+}
+.skills-section li:hover {
+    background-color: var(--secondary-bg-color);
+}
 /* Social links in footer */
 .social-links a {
     margin-right: 1rem;
@@ -216,7 +245,7 @@ footer a {
 
 /* Primary Color */
 :root {
-    --primary-color: #007BFF;  /* Adjust this to your preferred primary color */
+    --primary-color: #eee;  /* Adjust this to your preferred primary color */
 }
 
 .navigation a, .contact-section button {
@@ -248,7 +277,6 @@ footer a {
     .profile-card img {
         max-width: 100%;
         border-right: none;
-        border-bottom: 2px solid #eee;
         margin-bottom: 1rem;
     }
 }
@@ -264,7 +292,7 @@ footer a {
 
 /* Dark Theme */
 [data-theme='dark'] {
-    --primary-bg-color: #121212;
+    --primary-bg-color: #212121;
     --secondary-bg-color: #242424;  /* This is the adjusted color for the navbar and other secondary backgrounds */
     --primary-text-color: #eee;
     --secondary-text-color: #bbb;
@@ -286,6 +314,7 @@ body, .intro {
 .navigation a, .navbar a, .post-card a {
     color: var(--primary-text-color);
 }
+
 
 footer, .navbar {
     border-color: var(--border-color);

@@ -29,19 +29,43 @@ For a communication system, there are many possible [modulation types](https://e
 
 ![Amplifier Circuit](assets/images/AM_Amplifier.png)
 
+This transmitter takes an audio signal, mixes it with a modulating sinusoid, and adds a large high-frequency carrier to create a DSB-LC signal. Mixer circuits and summer circuits are important to design and configure throughout the scope of this project.
+
+After modulation, the signal will have to be amplified to a sufficiently large level for transmission. For this, an amplifier was designed using a 2N222A MOSFET transistor.
+
+
+
 ### Receiver
 
 To receive this signal, I use an envelope detector consisting of a diode and an RC circuit to recover the envelope of the DSB-LC signal.
 
 ## Methods
+Throughout the implementation of this project, I encountered many challenges, which prompted several innovative solutions.
+
 
 The first step in the design was in creating a useful transmitter, capable of generating and modulating an audio signal.
+
+Aside from the 555-timer signal for testing, a small electret microphone was also used as the input device, capturing audio signals from a headphone speaker that was placed next to it. Using the microphone, these analog signals are converted to electrical signals.
+
+ # Amplitude Modulator
+The electrical signals are then fed into an amplitude modulator. The modulator multiplies the input signal with a carrier signal of frequency 100kHz, resulting in an amplitude-modulated signal.
+
+The modulated signal is then fed into an amplifier to strengthen the signal for transmission.
+
+
+# Demodulator
+Once the signal is received, it is fed into an envelope detector, which demodulates the signal. This component uses a diode and LC circuit to remove the carrier signal, leaving only the original audio signal.
+
+# Speaker 
+Finally, the demodulated signal is fed into an audio amplifier, which strengthens the signal enough to drive a speaker. The speaker then converts these electrical signals back into sound, effectively reproducing the original audio.
+
 
 ![Transmitter Breadboard Circuit](assets/images/Transmitter.png)
 
 ## Results
 
-The resulting circuit successfully transmitted and received audio signals over a short distance.
+The resulting circuit successfully transmitted and received audio signals over a short distance. To increase the transmission distance, boosting the power of the transmitter would be required. However, the carrier frequency I used, 100kHz, could propagate over long distances due to its lower frequency nature, which necessitated a limitation on the power to very low wattage. The final circuit put together can be seen in the images below.
+
 
 ![Receiver Breadboard Circuit](assets/images/Receiver.png)
 
