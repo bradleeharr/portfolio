@@ -1,20 +1,48 @@
+body {
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.blog-layout {
+  display: flex;
+  justify-content: space-between;
+  max-width: 800px;  /* or your preferred max-width */
+  margin: auto;
+  padding: 20px;
+}
+
 .blog-post-container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .blog-post h1, .blog-post h2 {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-  }
-  
-  .blog-post-content {
-    margin-top: 20px;
-    font-size: 18px;
-    line-height: 1.6;
-  }
-  
-  /* Add more styles or customize as needed */
-  
+  flex: 8;
+  max-width: 800px;  /* maximum width */
+  margin: 50px 20px;
+  padding: 20px;
+  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.5);
+}
+
+.blog-post h1, .blog-post h2 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.blog-post-content {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.blog-post-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.blog-post-navigation a {
+  margin: 0 10px; /* Adds horizontal margin around each link */
+  flex: 1;
+  text-align: center; /* Center aligns the text */
+  word-wrap: break-word; /* Breaks the words to next line */
+}

@@ -10,7 +10,7 @@ body, h1, h2, p, ul, li, a {
 .intro {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 0rem;
     color: #333;
     line-height: 1.6;
 }
@@ -56,6 +56,7 @@ p {
 .profile-card img {
     max-width: 150px;
     border-right: 2px solid #eee;
+    padding: 10px
 }
 
 .profile-card > div {
