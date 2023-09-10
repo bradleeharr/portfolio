@@ -2,21 +2,26 @@ body {
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-attachment: fixed;
 }
-
-
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+}
 
 .blog-layout {
   display: flex;
   justify-content: space-between;
-  max-width: 800px;  /* or your preferred max-width */
+  max-width: 95%;  /* or your preferred max-width */
   margin: auto;
   padding: 20px;
 }
 
 .blog-post-container {
-  flex: 8;
-  max-width: 800px;  /* maximum width */
+  flex: 1;
+  max-width: 100%;  /* maximum width */
   margin: 50px 20px;
   padding: 20px;
   box-shadow: 0 3px 30px rgba(0, 0, 0, 0.5);

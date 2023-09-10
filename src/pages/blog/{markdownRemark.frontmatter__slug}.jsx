@@ -37,7 +37,7 @@ return (
           </Link>
         )}
         
-        <Link to="../../Index">Home</Link>
+        <Link to="../../">Home</Link>
         
         {nextPost && (
           <Link to={"../"+nextPost.node.frontmatter.slug}>

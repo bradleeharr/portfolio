@@ -8,11 +8,11 @@ body, h1, h2, p, ul, li, a {
 }
 
 .intro {
-    max-width: 1200px;
+    max-width: 95%;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0.5rem;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 img {
@@ -39,19 +39,16 @@ p {
     padding: 10px;
 }
 
-.navigation a {
-    margin-right: 1rem;
+footer {
+    background-color: white;
+}
+.social-links a {
     padding: 0.5rem 1rem;
     border: 1px solid #333;
     border-radius: 5px;
+    max-width: 400px;
     transition: background-color 0.3s;
-    background-color: #111;
-}
-
-.navigation a:hover, button:hover {
-    background-color: #fff;
-    color: #222;
-    
+    background-color: white;
 }
 
 .profile-card {
@@ -60,7 +57,9 @@ p {
     margin: 1rem;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 1);
+    background-color: white;
+
 }
 
 .profile-card img {
@@ -150,7 +149,7 @@ footer a {
 
 .content-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 3fr 1fr ; /* This makes .latest-posts twice as wide as the other two sections */
     gap: 2rem;
 }
 
@@ -255,7 +254,7 @@ footer a {
 }
 
 .navigation a:hover, .contact-section button:hover {
-    background-color: darken(var(--primary-color), 10%);
+    background-color: darken(var(--primary-color), 30%);
 }
 
 /* Responsive Adjustments */
@@ -319,3 +318,24 @@ body, .intro {
 footer, .navbar {
     border-color: var(--border-color);
 }
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500%;
+    z-index: -1; /* So it stays in the background */
+}
+
+.content-over-vortex, .intro {
+    background-color: rgba(255, 255, 255, 0.5); /* semi-transparent white */
+    padding: 15px;
+    border-radius: 8px;
+    position: relative;
+    overflow-y:auto;
+    z-index: 1; /* Ensure this is higher than the vortex's z-index */
+    opacity: 1.0;
+
+  }
+
