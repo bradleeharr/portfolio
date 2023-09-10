@@ -1,0 +1,58 @@
+---
+slug: "test-post"
+date: "2023-09-09"
+title: "Test"
+---
+## How to Look at a Spectrogram: A Beginner's Guide to RF
+
+If you've never encountered a spectrogram or are completely new to the world of Radio Frequency (RF), this tutorial will guide you through the basics. By the end, you'll be able to interpret a spectrogram and have a foundational understanding of RF.
+
+### What is RF (Radio Frequency)?
+
+Before diving into the spectrogram, let's quickly understand what RF is. RF, or *Radio Frequency* refers to the oscillation rate of electromagnetic radio waves in the range of 3 kHz to 300 GHz and the electric circuits which carry RF signals.
+
+### What is a Spectrogram?
+
+A spectrogram is a visual representation of the spectrum of frequencies in a sound signal as they vary with time. For RF, it shows the strength of the signals over time at various frequencies. Essentially, it's a snapshot of different frequencies present in a signal at any given time.
+
+### How to Read a Spectrogram:
+
+1. **Axes of a Spectrogram**:
+    - **X-Axis (Horizontal)**: This represents time. As you move from left to right, you're progressing forward in time.
+    - **Y-Axis (Vertical)**: This represents frequency. Higher points mean higher frequencies. 
+    - **Color/Intensity**: The different colors or shades represent the amplitude or strength of the detected frequencies. Darker shades typically indicate lower strengths, while brighter shades show stronger signals.
+
+2. **Identifying Signals**:
+   - Signals will often appear as bright vertical lines or blobs. A continuous signal (like a radio station broadcast) would appear as a continuous bright line. Intermittent signals would appear as fragmented or dotted lines.
+
+3. **Noise and Interference**:
+   - The background of the spectrogram that doesn't have distinct patterns or lines is generally considered noise. 
+   - Interference might appear as unexpected spikes or patterns in the spectrogram.
+
+4. **Annotations**: 
+   - In IQEngine, annotations can be added to highlight or note specific frequencies or patterns. These could be markers, text, or other indications.
+
+### Using IQEngine to View a Spectrogram:
+
+1. **Open IQEngine**: Head over to www.iqengine.org.
+
+2. **Load a Recording**: You can either view shared RF recordings or open a local RF recording. 
+
+3. **Adjust Visualization Tools**:
+   - **Zoom**: Zoom into specific parts of the spectrogram to get a detailed view.
+   - **Adjust Scales**: Change the frequency and time scales as needed.
+   - **Colormap**: Alter the colormap to a range that's comfortable for your eyes and helps in differentiating signal strengths.
+
+4. **Annotations**: 
+   - Explore global parameters and annotations. You can add new annotations graphically or through text.
+   - If you see an annotation in the table, click on it, and IQEngine will jump directly to that annotation in the spectrogram.
+
+5. **Plugins and More**: As you get more comfortable, explore the available plugins to run more advanced DSP processes.
+
+### Tips for Beginners:
+
+1. **Start Simple**: Choose a recording with minimal signals. This will help you differentiate between signals and background noise.
+2. **Practice**: The more spectrograms you view, the more patterns you'll recognize.
+3. **Ask Questions**: Join the IQEngine Discord chat channel. The community is an excellent resource for all your questions.
+
+Remember, like any skill, interpreting spectrograms improves with practice. The more you engage with it, the more patterns and intricacies you'll begin to understand. Dive in, explore, and soon you'll be fluent in the language of RF!

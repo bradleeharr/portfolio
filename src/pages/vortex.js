@@ -1,11 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('bg-video');
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     const titleDiv = document.createElement('div');
     titleDiv.id = 'titleDiv';
 
-    const totalCells = 200000;
+    const totalCells = 2000000;
 
     let canvasWidth = container.clientWidth;
     let canvasHeight = container.clientHeight;
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         canvasHeight = container.clientHeight;
         cellSize = Math.sqrt((canvasWidth * canvasHeight) / totalCells);
         width = Math.floor(container.clientWidth / cellSize);
-        height = Math.floor(container.clientHeight / cellSize);
+        height = Math.ceil(container.clientHeight / cellSize);
 
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
@@ -153,4 +153,4 @@ document.addEventListener('DOMContentLoaded', () => {
     //setInterval(() => {
     //    delay += 1; // Longer delay, slower animation
     //}, 60); // 60 milliseconds =  
-});
+}); */

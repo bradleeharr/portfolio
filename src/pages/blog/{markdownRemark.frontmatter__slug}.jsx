@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
-import { useStaticQuery, graphql, Link } from 'gatsby';
-import katex from "katex";
+import { graphql, Link } from 'gatsby';
+import { navigate } from 'gatsby'; // Import navigate
+
+//import katex from "katex";
 import "katex/dist/katex.min.css";
 import "./blog-template.css" // Importing our custom CSS
 
@@ -25,6 +27,8 @@ return (
     
   </div> */}
   <div className="blog-post-container">
+  <button onClick={() => navigate(-1)} className="back-button">← Back</button> {/* Added Back Button */}
+
       <div className="blog-post">
         <h1>{frontmatter.title}</h1>
         <h2>{frontmatter.date}</h2>
@@ -33,16 +37,26 @@ return (
       <div className="blog-post-navigation">
         {previousPost && (
           <Link to={"../"+previousPost.node.frontmatter.slug}>
-            ← {previousPost.node.frontmatter.title}
+          <div className="nav-button">
+              ← {previousPost.node.frontmatter.title}
+          </div>
           </Link>
+
         )}
         
-        <Link to="../../">Home</Link>
-        
+        <Link to="../../">
+        <div className="nav-button home-button">
+        Home
+        </div>
+        </Link>
+
         {nextPost && (
           <Link to={"../"+nextPost.node.frontmatter.slug}>
-            {nextPost.node.frontmatter.title} →
+          <div className="nav-button">
+              {nextPost.node.frontmatter.title} →
+          </div>
           </Link>
+
         )}
       </div>
     </div>
