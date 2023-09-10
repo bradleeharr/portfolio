@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Intro.css';
+import './index.css';
 import 'font-awesome/css/font-awesome.min.css';
 
 const Intro = () => {
