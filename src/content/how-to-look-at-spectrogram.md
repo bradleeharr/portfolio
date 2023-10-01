@@ -1,9 +1,9 @@
 ---
-slug: "test-post"
+slug: "spectrogram-iq"
 date: "2023-09-09"
-title: "Test"
+title: "How to Look at a Spectrogram with IQEngine"
 ---
-## How to Look at a Spectrogram: A Beginner's Guide to RF
+## How to Look at a Spectrogram: A Beginner's Guide to RF using IQEngine
 
 If you've never encountered a spectrogram or are completely new to the world of Radio Frequency (RF), this tutorial will guide you through the basics. By the end, you'll be able to interpret a spectrogram and have a foundational understanding of RF.
 
