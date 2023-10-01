@@ -1,4 +1,4 @@
-/* document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('bg-video');
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
@@ -153,4 +153,4 @@
     //setInterval(() => {
     //    delay += 1; // Longer delay, slower animation
     //}, 60); // 60 milliseconds =  
-}); */
+}); 

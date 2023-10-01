@@ -84,7 +84,8 @@ html, body {
 
 .home-button {
   background-color: #f7f7f7;
-  color: #007acc;
+  color:  #f7f7f7;
+;
 }
 
 .home-button:hover {
@@ -92,7 +93,7 @@ html, body {
 }
 
 .home-button a {
-  color: #007acc;
+  color: #f7f7f7;
 }
 
 .home-button a:hover {
@@ -103,7 +104,7 @@ html, body {
 
 a:visited
 {
-  color: purple
+  color: rgb(23,120,120);
 }
 
 a {
