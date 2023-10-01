@@ -1,52 +1,50 @@
 import React from 'react';
 import "./styles/index.css";
-import VortexAnimation from '../components/VortexAnimation.js';
-
-// Import other assets
-// import logo from '../assets/logo.png';
-
+//import GameOfLifeAnimation from './vortex.js';
+import Animation from './vortex.js';
 const Index = () => {
+
+  const handleNavigation = (section) => {
+    document.getElementById(section).scrollIntoView({behavior: 'smooth'});
+  }
+
+  const handleOpenResume = () => {
+    window.open('assets/resume.pdf');
+  }
+
   return (
-    <React.Fragment>
-      <head>
-        <title>Bradlee Harrison Home</title>
-      </head>
+    <>
+      <header className="main-header clearfix" role="header">
+        <div className="logo">
+          <a onClick={() => handleNavigation('top')}><em>./</em></a>
+        </div>
+        <nav id="menu" className="main-nav" role="navigation">
+          <ul className="main-menu">
+            <li><a href="#section1">Home</a></li>
+            <li><a href="#section3">About Me</a></li>
+            <li><a href="#section6">Contact</a></li>
+            <li><a onClick={handleOpenResume}>Resume</a></li>
+          </ul>
+        </nav>
+      </header>
 
-      <body>
-  <header class="main-header clearfix" role="header">
-    <div class="logo">
-      <a onclick="document.getElementById('top').scrollIntoView({behavior: 'smooth'})"><em>./</em> </a>
+      <section className="section main-banner" id="top" data-section="section1">
+      <div id="bg-video" style={{width: '100vw', height: '100vh'}}>
+        <Animation />
     </div>
-    <nav id="menu" class="main-nav" role="navigation">
-      <ul class="main-menu">
-        <li><a href="#section1">Home</a></li>
-        <li><a href="#section3">About Me</a></li>
-        <li><a href="#section6">Contact</a></li>
-        <li><a onclick="window.open('assets/resume.pdf');">Resume</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  {/* Main Banner Area */}
-
-<script src="assets/js/vortex.js">SCRIPT HERE</script>
-
-  <section class="section main-banner" id="top" data-section="section1">
-        <div id="bg-video"></div>
         <div id="title"></div>
-        <div class="video-overlay header-text">
-            <div class="caption">
+        <div className="video-overlay header-text">
+            <div className="caption">
                 <h6>Electrical and Computer Engineering</h6>
                 <h2><em>Bradlee</em> Harrison</h2>
-                <div class="main-button">
-                    <div class="scroll-to-section"><a href="/blogindex">See more</a></div>
+                <div className="main-button">
+                    <a href="/blogindex">See more</a>
                 </div>
             </div>
         </div>
-  </section>
-</body>
-</React.Fragment>
-);
+      </section>
+    </>
+  );
 };
 
 export default Index;
