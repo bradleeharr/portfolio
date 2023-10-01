@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './styles/blogindex.css'
 import 'font-awesome/css/font-awesome.min.css';
+import profileImg from '../images/profile.jpg';
 
 const Intro = () => {
     
@@ -19,15 +20,15 @@ const Intro = () => {
       <div className="row">
         <div className="col-md-12">
           <div className="continer centerIt">
-          <h4><em>Hello, </em> I'm Bradlee Harrison</h4>  
-          <img src="https://media.licdn.com/dms/image/D5603AQH1uHh5IA7rSg/profile-displayphoto-shrink_800_800/0/1690358917251?e=2147483647&v=beta&t=Rqh0vvyEKaLyT2JwEy9fAWIcNdd479t5fuKKUNNl26I" alt="Bradlee Harrison"/>
+          <h2><em>Hello, </em> I'm Bradlee Harrison.</h2>  
+          <img src={profileImg} alt="Bradlee Harrison" />
  
               <p class="scroll-to-section">I am an electrical and computer engineer. I have interests in
                Signal Processing of Radar/Communications, Information Theory, Embedded Systems, and Machine Learning.
                I received my Bachelor's Degree in Electrical Engineering at the University of Oklahoma in December 2022. 
-               I am pursuing a master's in Electrical and Computer Engineering at the University of Oklahoma's Advanced Radar Research Center planned May 2024.
-               I'm always looking to learn more. Please don't hesitate to <a href="#section6"> contact me. </a> or                     <a href="./blog/"> Check out some of my posts. </a>
-</p>
+               I am pursuing a master's in Electrical and Computer Engineering at the University of Oklahoma's Advanced Radar Research Center planned Dec 2023.
+               I'm always looking to learn more. Please don't hesitate to contact me, or just check out some of my posts. 
+                </p>
           </div>
         </div> 
       </div>
@@ -84,7 +85,7 @@ const Intro = () => {
             </ul>
             </div>
         </div>
-
+        <section className="contact">
         <div className="contact-section">
             <h2>Contact Me</h2>
             <form>
@@ -94,6 +95,7 @@ const Intro = () => {
                 <button type="submit">Send Message</button>
             </form>
         </div>
+        </section>
 
     <footer>
             <p>© 2023 Bradlee Harrison</p>

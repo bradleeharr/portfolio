@@ -14,7 +14,7 @@ const Index = () => {
 
   return (
     <>
-      <header className="main-header clearfix" role="header">
+      <header className="main-header " role="header">
         <div className="logo">
           <a onClick={() => handleNavigation('top')}><em>./</em></a>
         </div>
@@ -32,7 +32,7 @@ const Index = () => {
       <div id="bg-video" style={{width: '100vw', height: '100vh'}}>
         <Animation />
     </div>
-        <div id="title"></div>
+    <div id="title"></div>
         <div className="video-overlay header-text">
             <div className="caption">
                 <h6>Electrical and Computer Engineering</h6>
