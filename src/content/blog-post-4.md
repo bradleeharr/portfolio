@@ -1,7 +1,7 @@
 ---
 slug: "antennas-from-military-handbook"
 date: "2022-12-15"
-title: "An Introduction to Antennas from "
+title: "An Introduction to Antennas from the US Military Field Antenna Handbook"
 ---
 
 ## Introduction

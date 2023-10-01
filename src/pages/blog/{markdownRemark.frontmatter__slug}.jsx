@@ -35,14 +35,14 @@ return (
         <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: html }} />
       </div>
       <div className="blog-post-navigation">
-        {previousPost && (
+        {/*previousPost && (
           <Link to={"../"+previousPost.node.frontmatter.slug}>
           <div className="nav-button">
               ← {previousPost.node.frontmatter.title}
           </div>
           </Link>
 
-        )}
+        )*/}
         
         <Link to="../../">
         <div className="nav-button home-button">
@@ -50,14 +50,14 @@ return (
         </div>
         </Link>
 
-        {nextPost && (
+        {/*nextPost && (
           <Link to={"../"+nextPost.node.frontmatter.slug}>
           <div className="nav-button">
               {nextPost.node.frontmatter.title} →
           </div>
           </Link>
 
-        )}
+        )*/}
       </div>
     </div>
 

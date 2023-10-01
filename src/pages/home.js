@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './styles/blogindex.css'
 import 'font-awesome/css/font-awesome.min.css';
 import profileImg from '../images/profile.jpg';
+import { navigate } from 'gatsby'; // Import navigate
 
 const Intro = () => {
     
@@ -14,6 +15,7 @@ const Intro = () => {
     <div className="intro"> 
 
 
+<button onClick={() => navigate(-1)} className="back-button">← Back</button> {/* Added Back Button */}
 
 <section className="profile-card">
     <div className="container">
@@ -35,22 +37,19 @@ const Intro = () => {
     </div>
 </section>
 
-        <div className="navigation">
-            {/*<a href="#blog">Blog</a>
-            <a href="#projects">Projects</a> 
-            <button onClick={toggleTheme}> Toggle Dark Mode </button> */}
-        </div>
-
+        
+  
         <div className="content-grid">
             <div className="latest-posts">
-                <a href="/blog/"><h2>Latest Blog Posts</h2>
+                {/*<a href="/blog/">*/}<h2>Latest Content</h2>
                 <a href="/blog/my-first-blog-post/#">
                     <div className="post-card">
                         <h3>Gatsby and Katex</h3>
                         <p> August 25, 2023 </p>
                         <p>Using Markdown to create posts with LaTeX format supported...</p>
                     </div>
-                </a>
+                {//</a>
+                }
                 <a href="/blog/ann-chess/#">
                 <div className="post-card">
                     <h3>Artificial Neural Networks for Chess</h3>
@@ -58,26 +57,34 @@ const Intro = () => {
                     <p>Analysis and implementation of an AI for chess trained on supervised learning from human game data...</p>
                 </div>
                 </a>
-                <a href="/blog/test-post/#"><div className="post-card">
+                {/*<a href="/blog/test-post/#"><div className="post-card">
                     <h3>IR Kalman Filter Tracking</h3>
                     <p> December 12, 2022 </p>
                     <p>Using Kalman Filer and YOLOv8 to perform state-of-the-art object tracking...</p>
-                </div>
-                </a>
-                </a>
+                </div> 
+        </a>*/}
+        </a>
             </div>
 
             <div className="skills-section">
-            <h2>My Skills</h2>
-            Click for a list of projects with respect to each skill!
+            <h2>My Skills and Tools!</h2>
+            {/*Click for a list of projects with respect to each skill! */}
             <ul>
+
                 <li>Python</li>
                 <li>C/C++</li>
-                <li>C#</li>
+                <li>Pytorch</li>
+                <li>Software Defined Radio</li>
+                <li>C#/.NET</li>
                 <li>Java</li>
                 <li>MATLAB</li>
                 <li>React</li>
                 <li>Node.js</li>
+                <li>TensorFlow</li>
+                <li>FPGAs</li>
+                <li>Microcontrollers</li>
+                <li>Verilog</li>
+                <li>GNU Radio</li>
                 <li>Gatsby</li>
                 <li>HTML</li>
                 <li>CSS</li>
@@ -88,21 +95,26 @@ const Intro = () => {
         <section className="contact">
         <div className="contact-section">
             <h2>Contact Me</h2>
-            <form>
-                <input type="text" placeholder="Your Name" />
-                <input type="email" placeholder="Your Email" />
-                <textarea placeholder="Your Message"></textarea>
+            <div className="navigation">
+        <div className="social-links centerIt">
+                <a href="https://github.com/bradleeharr"><i className="fa fa-github"></i>  GitHub</a>
+                <a href="https://linkedin.com/in/bradlee-harrison"><i className="fa fa-linkedin"></i> LinkedIn</a>
+            </div>
+            {/*<a href="#blog">Blog</a>
+            <a href="#projects">Projects</a> 
+            <button onClick={toggleTheme}> Toggle Dark Mode </button> */}
+        </div>
+            <form action="https://formspree.io/f/mqkvkjgj" method="post">
+                <input input name="name" type="text" class="form-control" id="name" placeholder="Your Name" />
+                <input input name="email" type="email" class="form-control" placeholder="Your Email" />
+                <input input name="message" type="text" class="form-control" placeholder="Your Message"/>
                 <button type="submit">Send Message</button>
             </form>
         </div>
         </section>
 
     <footer>
-            <p>© 2023 Bradlee Harrison</p>
-            <div className="social-links">
-                <a href="https://github.com/bradleeharr"><i className="fa fa-github"></i>  GitHub</a>
-                <a href="https://linkedin.com/in/bradlee-harrison"><i className="fa fa-linkedin"></i> LinkedIn</a>
-            </div>
+            
     </footer>
 
 

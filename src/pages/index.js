@@ -14,7 +14,7 @@ const Index = () => {
 
   return (
     <>
-      <header className="main-header " role="header">
+      {/*<header className="main-header " role="header">
         <div className="logo">
           <a onClick={() => handleNavigation('top')}><em>./</em></a>
         </div>
@@ -26,7 +26,7 @@ const Index = () => {
             <li><a onClick={handleOpenResume}>Resume</a></li>
           </ul>
         </nav>
-      </header>
+      </header> */}
 
       <section className="section main-banner" id="top" data-section="section1">
       <div id="bg-video" style={{width: '100vw', height: '100vh'}}>
@@ -38,7 +38,7 @@ const Index = () => {
                 <h6>Electrical and Computer Engineering</h6>
                 <h2><em>Bradlee</em> Harrison</h2>
                 <div className="main-button">
-                    <a href="/blogindex">See more</a>
+                    <a href="/home">See more</a>
                 </div>
             </div>
         </div>

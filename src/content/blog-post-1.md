@@ -22,24 +22,24 @@ Now, smoothly and surely, I can add equations to markdown and implement them as 
 
 # Example:
 >__Inline Equation__:
->The Chu Limit, a theoretical limit for electrically small antennas,<!-- % https://www.kildal.se/wp-content/uploads/2017/03/Kildal-FoAE-1703-color-Cover.pdf --> is defined simply as a ratio between an antennas $Q$ factor, the radius, $a$, of the sphere enclosing the antenna, and the wavenumber $k$. The equation amounts to $Q = \frac{1}{(ka)^3} + \frac{1}{ka}$
+>...a ratio between $Q$, the radius, $a$, of a sphere enclosing, and the wavenumber $k$. The equation amounts to $Q = \frac{1}{(ka)^3} + \frac{1}{ka}$
 > > Wrap a statement in a single '$' in order to create an inline equation.
 
 > >```
-> >...a ratio between an antennas $Q$ factor, the radius, $a$, of the sphere enclosing the antenna, and the wavenumber $k$.
+> >...a ratio between $Q$, the radius, $a$, of a sphere enclosing, and the wavenumber $k$.
 > >The equation amounts to $Q = \frac{1}{(ka)^3} + \frac{1}{ka}$
 > > ```
 
 >__Block equation__:
 > $$
-> Q_{TM} = Q_{TE} = \frac{1}{(ka)^3} + \frac{1}{ka}
+> Q = \frac{1}{(ka)^3} + \frac{1}{ka}
 > $$
 
 >> Wrap a statement in '\$\$' in order to create a block equation. Note the need for the spacing before and after the starting and ending \$\$.
 
 >>```
 >>$$
->>Q_{TM} = Q_{TE} = \frac{1}{(ka)^3} + \frac{1}{ka} 
+>>Q = \frac{1}{(ka)^3} + \frac{1}{ka} 
 >>$$
 >>```
 
