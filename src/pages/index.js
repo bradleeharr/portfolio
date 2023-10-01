@@ -1,5 +1,6 @@
 import React from 'react';
 import "./styles/index.css";
+import VortexAnimation from '../components/VortexAnimation.js';
 
 // Import other assets
 // import logo from '../assets/logo.png';

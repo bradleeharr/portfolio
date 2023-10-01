@@ -1,42 +1,49 @@
+/* Reset and Global Styles */
 body {
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevent horizontal scroll */
   background-attachment: fixed;
 }
+
 html, body {
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevent horizontal scroll */
   height: 100%;
 }
-
+/* Blog Layout */
 .blog-layout {
   display: flex;
   justify-content: space-between;
-  max-width: 95%;  /* or your preferred max-width */
+  max-width: 95%; /* Adjust max-width as necessary */
   margin: auto;
   padding: 20px;
 }
 
+/* Blog Post Container */
 .blog-post-container {
   flex: 1;
-  max-width: 100%;  /* maximum width */
+  max-width: 100%; /* Adjust max-width as necessary */
   margin: 50px 20px;
   padding: 20px;
   box-shadow: 0 3px 30px rgba(0, 0, 0, 0.5);
 }
 
+/* Blog Post Headers */
 .blog-post h1, .blog-post h2 {
   border-bottom: 1px solid #eee;
   padding-bottom: 10px;
 }
 
+/* Blog Post Content */
 .blog-post-content {
   margin-top: 20px;
   font-size: 18px;
   line-height: 1.6;
 }
+
+/* Navigation Styles */
 .blog-post-navigation {
   display: flex;
   justify-content: space-between;
@@ -46,18 +53,15 @@ html, body {
 }
 
 .blog-post-navigation a {
-  margin: 0 10px; /* Adds horizontal margin around each link */
+  margin: 0 10px; 
   flex: 1;
-  text-align: center; /* Center aligns the text */
-  word-wrap: break-word; /* Breaks the words to next line */
-}
-.blog-post-navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
+  text-align: center;
+  word-wrap: break-word;
+  color: white; /* Set default text color to white */
+  text-decoration: none;
 }
 
+/* Navigation Buttons */
 .nav-button {
   background-color: #007acc;
   padding: 10px 15px;
@@ -72,54 +76,29 @@ html, body {
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
-.nav-button a {
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
+.nav-button a, .nav-button a:hover, .nav-button a:active, .nav-button a:visited {
+  color: white; /* Ensure text is always white for better visibility */
 }
 
-.nav-button a:hover {
-  color: #ddd;
+/* Links */
+.blog-layout a {
+  color: rgb(23, 123, 223);
 }
 
+.blog-layout a:visited {
+  color: rgb(23,120,120);
+}
+
+/* Home Button */
 .home-button {
   background-color: #f7f7f7;
-  color:  #f7f7f7;
-;
+  color:  #007acc; /* Adjusted color to ensure visibility */
 }
 
 .home-button:hover {
   background-color: #e4e4e4;
 }
 
-.home-button a {
-  color: #f7f7f7;
-}
-
-.home-button a:hover {
-  color: #004a7c;
-}
-
-
-
-a:visited
-{
-  color: rgb(23,120,120);
-}
-
-a {
-  color: rgb(23, 123, 223);
-
-}
-
-.blog-post-navigation a,
-.blog-post-navigation a:hover,
-.blog-post-navigation a:active
-{
-  color: white;
-  text-decoration: none; 
-}
-.blog-post-navigation a:visited 
-{
-  color: white;
+.home-button a, .home-button a:hover, .home-button a:active, .home-button a:visited {
+  color: #007acc; /* Ensure text is always the adjusted color for better visibility */
 }

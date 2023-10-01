@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import './styles/blogindex.css'
 import 'font-awesome/css/font-awesome.min.css';
-//import VortexAnimation from '../components/VortexAnimation.js';
 
 const Intro = () => {
     
@@ -15,8 +14,6 @@ const Intro = () => {
 
 
 
-    <h1>Bradlee Harrison</h1>
-        <p>Aspiring Electrical/Computer Engineer and Software Developer</p>
 <section className="profile-card">
     <div className="container">
       <div className="row">
