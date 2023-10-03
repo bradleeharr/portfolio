@@ -137,9 +137,9 @@ function Animation() {
                   if (updateCounter < stopPopTime) {
                       let random_num = Math.random();
                       if (y > 0) nextGrid[y-1][columnToUpdate] |= (random_num < 0.04);
-                      if (columnToUpdate < columnsToUpdate) nextGrid[y][columnToUpdate+1] |= (random_num < 0.003);
-                      if (columnToUpdate+1 < columnsToUpdate) nextGrid[y][columnToUpdate+2] |= (random_num < 0.002);
-                      if (columnToUpdate+2 < columnsToUpdate) nextGrid[y][columnToUpdate+3] |= (random_num < 0.001);
+                      if (columnToUpdate < columnsToUpdate) nextGrid[y][columnToUpdate+1] |= (random_num < 0.03);
+                      if (columnToUpdate+1 < columnsToUpdate) nextGrid[y][columnToUpdate+2] |= (random_num < 0.02);
+                      if (columnToUpdate+2 < columnsToUpdate) nextGrid[y][columnToUpdate+3] |= (random_num < 0.01);
                       if (columnToUpdate+3 < columnsToUpdate) nextGrid[y][columnToUpdate+4] |= (random_num < 0.5);
                   }
                   if (updateCounter > resetTime - dePopTime) {

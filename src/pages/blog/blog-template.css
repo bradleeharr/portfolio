@@ -3,37 +3,49 @@ body {
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  overflow-y: auto;
-  overflow-x: hidden; /* Prevent horizontal scroll */
   background-attachment: fixed;
 }
 
 html, body {
-  overflow-x: hidden; /* Prevent horizontal scroll */
   height: 100%;
 }
+
+/* Code Styling */
+code {
+  display: block;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
 /* Blog Layout */
 .blog-layout {
   display: flex;
   justify-content: space-between;
-  max-width: 95%; /* Adjust max-width as necessary */
+  max-width: 100%;
   margin: auto;
   padding: 20px;
+}
+
+/* For smaller screens, adjust layout */
+@media (max-width: 768px) {
+  .blog-layout {
+    flex-direction: column;
+    padding: 10px;
+  }
 }
 
 /* Blog Post Container */
 .blog-post-container {
   flex: 1;
-  max-width: 100%; /* Adjust max-width as necessary */
-  margin: 50px 20px;
   padding: 20px;
   box-shadow: 0 3px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Blog Post Headers */
-.blog-post h1, .blog-post h2 {
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
+@media (max-width: 768px) {
+  .blog-post-container {
+    padding: 10px;
+  }
 }
 
 /* Blog Post Content */
@@ -41,6 +53,19 @@ html, body {
   margin-top: 20px;
   font-size: 18px;
   line-height: 1.6;
+}
+
+/* Adjust font size for smaller screens */
+@media (max-width: 768px) {
+  .blog-post-content {
+    font-size: 16px; /* Adjust as needed */
+  }
+}
+
+/* Blog Post Headers */
+.blog-post h1, .blog-post h2 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
 }
 
 /* Navigation Styles */
@@ -57,28 +82,20 @@ html, body {
   flex: 1;
   text-align: center;
   word-wrap: break-word;
-  color: white; /* Set default text color to white */
+  color: white;
   text-decoration: none;
 }
 
 /* Navigation Buttons */
 .nav-button {
   background-color: #007acc;
-  color: white;
   padding: 10px 15px;
   border-radius: 4px;
   transition: all 0.2s;
-  display: inline-block;
 }
 
 .nav-button:hover {
   background-color: #004a7c;
-  transform: scale(1.05);
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
-}
-
-.nav-button a, .nav-button a:hover, .nav-button a:active, .nav-button a:visited {
-  color: white; /* Ensure text is always white for better visibility */
 }
 
 /* Links */
@@ -93,13 +110,17 @@ html, body {
 /* Home Button */
 .home-button {
   background-color: #f7f7f7;
-  color:  #007acc; /* Adjusted color to ensure visibility */
+  color:  #007acc;
 }
 
 .home-button:hover {
   background-color: #e4e4e4;
 }
 
-.home-button a, .home-button a:hover, .home-button a:active, .home-button a:visited {
-  color: #007acc; /* Ensure text is always the adjusted color for better visibility */
+/* Text, code, and paragraph adjustments for small screens */
+@media (max-width: 768px) {
+  pre, code, p {
+    font-size: 12px; /* Adjust as needed */
+    word-break: break-word;
+  }
 }

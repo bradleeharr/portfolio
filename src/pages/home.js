@@ -23,8 +23,8 @@ const Intro = () => {
         <div className="col-md-12">
           <div className="continer centerIt">
           <h2><em>Hello, </em> I'm Bradlee Harrison.</h2>  
-          <img src={profileImg} alt="Bradlee Harrison" />
- 
+          {//<img src={profileImg} alt="Bradlee Harrison" />
+}
               <p class="scroll-to-section">I am an electrical and computer engineer. I have interests in
                Signal Processing of Radar/Communications, Information Theory, Embedded Systems, and Machine Learning.
                I received my Bachelor's Degree in Electrical Engineering at the University of Oklahoma in December 2022. 
@@ -67,7 +67,7 @@ const Intro = () => {
             </div>
 
             <div className="skills-section">
-            <h2>My Skills and Tools!</h2>
+            <h2>My Skills and Tools</h2>
             {/*Click for a list of projects with respect to each skill! */}
             <ul>
 

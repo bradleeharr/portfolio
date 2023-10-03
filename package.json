@@ -23,6 +23,7 @@
     "remark-math": "^5.1.1"
   },
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "prettier": "^2.8.8"
   },
   "keywords": [
@@ -36,7 +37,8 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "deploy": "gatsby build && gh-pages -d public -b main"
   },
   "repository": {
     "type": "git",
@@ -44,5 +46,7 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
-  }
+  },
+  "homepage": "https://www.bradleeharrison.com"
+
 }

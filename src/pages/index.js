@@ -13,7 +13,7 @@ const Index = () => {
   }
 
   return (
-    <>
+    <div>
       {/*<header className="main-header " role="header">
         <div className="logo">
           <a onClick={() => handleNavigation('top')}><em>./</em></a>
@@ -43,7 +43,7 @@ const Index = () => {
             </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

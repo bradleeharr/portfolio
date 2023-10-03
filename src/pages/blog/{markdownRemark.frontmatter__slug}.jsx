@@ -22,7 +22,7 @@ useEffect(() => {
   window.scrollTo(0, 0);
 }, []);
 return (
-  <div className="blog-layout">
+  <><div className="blog-layout">
     {/* <div className="sidebar">
     
   </div> */}
@@ -62,7 +62,8 @@ return (
     </div>
 
 </div>
-    
+</>
+  
   );
 }
 
