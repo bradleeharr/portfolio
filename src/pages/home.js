@@ -22,7 +22,7 @@ const Intro = () => {
       <div className="row">
         <div className="col-md-12">
           <div className="continer centerIt">
-          <h2><em>Hello, </em> I'm Bradlee Harrison.</h2>  
+          <h2><em>Hello, </em> I'm Bradlee Harrison. This is my site. </h2>  
           {//<img src={profileImg} alt="Bradlee Harrison" />
 }
               <p class="scroll-to-section">I am an electrical and computer engineer. I have interests in
@@ -42,6 +42,11 @@ const Intro = () => {
         <div className="content-grid">
             <div className="latest-posts">
                 {/*<a href="/blog/">*/}<h2>Latest Content</h2>
+                <a href="/blog/l-m-hdpc/#"><div className="post-card">
+                    <h3>Low Density Parity Check Codes</h3>
+                    <p> 2022-2023 </p>
+                    <p>Some sources on Low Density Parity Check Codes...</p>
+                </div> 
                 <a href="/blog/my-first-blog-post/#">
                     <div className="post-card">
                         <h3>Gatsby and Katex</h3>
@@ -57,12 +62,12 @@ const Intro = () => {
                     <p>Analysis and implementation of an AI for chess trained on supervised learning from human game data...</p>
                 </div>
                 </a>
-                {/*<a href="/blog/test-post/#"><div className="post-card">
-                    <h3>IR Kalman Filter Tracking</h3>
-                    <p> December 12, 2022 </p>
-                    <p>Using Kalman Filer and YOLOv8 to perform state-of-the-art object tracking...</p>
+                <a href="/blog/fpga-resources/#"><div className="post-card">
+                    <h3>FPGA Resources</h3>
+                    <p> 2022-2023 </p>
+                    <p>A list of FPGA Resources for learning and practicing Verilog, VHDL, and understanding digital FPGA synthesis...</p>
                 </div> 
-        </a>*/}
+        </a>
         </a>
             </div>
 
