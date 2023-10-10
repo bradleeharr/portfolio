@@ -41,12 +41,13 @@ const Intro = () => {
   
         <div className="content-grid">
             <div className="latest-posts">
-                {/*<a href="/blog/">*/}<h2>Latest Content</h2>
+                {/*<a href="/blog/">*/}
+                <h2>Latest Content</h2>
                 <a href="/blog/l-m-hdpc/#"><div className="post-card">
                     <h3>Low Density Parity Check Codes</h3>
                     <p> 2022-2023 </p>
                     <p>Some sources on Low Density Parity Check Codes...</p>
-                </div> 
+                </div></a> 
                 <a href="/blog/my-first-blog-post/#">
                     <div className="post-card">
                         <h3>Gatsby and Katex</h3>
