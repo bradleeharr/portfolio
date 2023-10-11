@@ -12,5 +12,5 @@ https://hdlbits.01xz.net/wiki/Main_Page
 Python to HDL
 https://www.myhdl.org/
 
-<h1> Discussions on FPGAs </h1>
+<h4> Discussions on FPGAs </h4>
 https://news.ycombinator.com/item?id=16321314
