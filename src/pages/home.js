@@ -25,12 +25,10 @@ const Intro = () => {
           <h2><em>Hello, </em> I'm Bradlee Harrison. This is my site. </h2>  
           {//<img src={profileImg} alt="Bradlee Harrison" />
 }
-              <p class="scroll-to-section">I am an electrical and computer engineer. I have interests in
+              <p class="scroll-to-section">I study electrical and computer engineering. I have interests in
                Signal Processing of Radar/Communications, Information Theory, Embedded Systems, and Machine Learning.
-               I received my Bachelor's Degree in Electrical Engineering at the University of Oklahoma in December 2022. 
-               I am pursuing a master's in Electrical and Computer Engineering at the University of Oklahoma's Advanced Radar Research Center planned Dec 2023.
-               I'm always looking to learn more. Please don't hesitate to contact me, or just check out some of my posts. 
-                </p>
+               I am pursuing a master's in Electrical and Computer Engineering at the University of Oklahoma's Advanced Radar Research Center, planning to graduate Dec 2023.
+               </p>
           </div>
         </div> 
       </div>
@@ -38,11 +36,38 @@ const Intro = () => {
 </section>
 
         
-  
+
         <div className="content-grid">
+        <div className="skills-section">
+            <h2>My Skills and Tools</h2>
+            {/*Click for a list of projects with respect to each skill! */}
+            <ul>
+
+                <li>Python</li>
+                <li>C/C++</li>
+                <li>Pytorch</li>
+                <li>Software Defined Radio</li>
+                <li>C#/.NET</li>
+                <li>Java</li>
+                <li>MATLAB</li>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>TensorFlow</li>
+                <li>FPGAs</li>
+                <li>Microcontrollers</li>
+                <li>Verilog</li>
+                <li>GNU Radio</li>
+                <li>Gatsby</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JS</li>
+            </ul>
+            <a href="/fluid">Fluid Sim</a>
+            
+            </div>
             <div className="latest-posts">
                 {/*<a href="/blog/">*/}
-                <h2>Latest Content</h2>
+                <h2>Short Notes</h2>
                 <a href="/blog/l-m-hdpc/#"><div className="post-card">
                     <h3>Low Density Parity Check Codes</h3>
                     <p> 2022-2023 </p>
@@ -72,31 +97,7 @@ const Intro = () => {
         </a>
             </div>
 
-            <div className="skills-section">
-            <h2>My Skills and Tools</h2>
-            {/*Click for a list of projects with respect to each skill! */}
-            <ul>
-
-                <li>Python</li>
-                <li>C/C++</li>
-                <li>Pytorch</li>
-                <li>Software Defined Radio</li>
-                <li>C#/.NET</li>
-                <li>Java</li>
-                <li>MATLAB</li>
-                <li>React</li>
-                <li>Node.js</li>
-                <li>TensorFlow</li>
-                <li>FPGAs</li>
-                <li>Microcontrollers</li>
-                <li>Verilog</li>
-                <li>GNU Radio</li>
-                <li>Gatsby</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JS</li>
-            </ul>
-            </div>
+           
         </div>
         <section className="contact">
         <div className="contact-section">
