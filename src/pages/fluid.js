@@ -9,52 +9,62 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
  */
 
 import React, { useEffect, useRef } from 'react';
-
+import p5 from 'p5';
 function Animation() {
     const containerRef = useRef(null);
+  
     useEffect(() => {
-
-        console.log('Script Loaded');
-        const container = containerRef.current;
-        if (!container) return;
-
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        const titleDiv = document.createElement('div');
-        titleDiv.id = 'titleDiv';
-
-        // Set canvas size to match the container
-        canvas.width = container.clientWidth;
-        canvas.height = container.clientHeight;
-
-        // Append canvas and title div to the container
-        container.appendChild(canvas);
-        container.appendChild(titleDiv);
-
+      let sketch = (p) => {
         let colorMap, velocityMap;
         let mapDisplaySize, mapResolution, gridSize;
+  
+        p.setup = () => {
+          p.frameRate(15);
+          // Initialize canvas and map settings
+          p.createCanvas(p.windowWidth, p.windowHeight);
+          mapDisplaySize = Math.min(p.width, p.height);
+          mapResolution = 20;
+          gridSize = mapDisplaySize / mapResolution;
+  
+          initialize();
+        };
+  
+        p.mousePressed = () => {
+          initialize();
+        };
+  
+        p.draw = () => {
+          p.background(255);
+          const xOffset = (p.width - mapDisplaySize) / 2;
+          const yOffset = (p.height - mapDisplaySize) / 2;
+          renderColorMap(xOffset, yOffset);
+          renderVelocityMap(xOffset, yOffset);
+          updateColorMap();
+        };
 
-        function setup() {
-            frameRate(5);
-            // Initialize canvas and map settings
-            createCanvas(windowWidth, windowHeight)
-            mapDisplaySize = Math.min(width, height);
-            mapResolution = 48;
-            gridSize = mapDisplaySize / mapResolution;
-
-            initialize();
+        function renderColorMap(xOffset, yOffset) {
+            p.noStroke();
+            for (let y = 0; y < mapResolution; y++) {
+                for (let x = 0; x < mapResolution; x++) {
+                    p.fill(arrayToColor(colorMap[y][x]));
+                    p.rect(xOffset + gridSize * x, yOffset + gridSize * y, gridSize, gridSize);
+                }
+            }
         }
 
-        function mousePressed() {
-            // On mouse press, re-render
-            initialize();
+        function renderVelocityMap(xOffset, yOffset) {
+            p.noFill();
+            p.stroke(0);
+            for (let y = 0; y < mapResolution; y++) {
+                for (let x = 0; x < mapResolution; x++) {
+                    const cx = xOffset + gridSize * x + gridSize * 0.5;
+                    const cy = yOffset + gridSize * y + gridSize * 0.5;
+                    const g = velocityMap[y][x];
+                    drawArrow(cx - g[0] * gridSize * 0.25, cy - g[1] * gridSize * 0.25, cx + g[0] * gridSize * 0.25, cy + g[1] * gridSize * 0.25);
+                }
+            }
         }
 
-        function draw() {
-            background(255);
-            const xOffset = (width - mapDisplaySize) / 2;
-            const yOffset = (height - mapDisplaySize) / 2;
-        }
         function updateColorMap() {
             const newColorMap = [];
             for (let y = 0; y < mapResolution; y++) {
@@ -68,27 +78,81 @@ function Animation() {
             colorMap = newColorMap;
         }
 
-
-        // Start the animation loop
-        // Start the animation loop with initial speed
-        let start = performance.now();
-        let delay = 20; // Delay between frames in milliseconds
-
-        function startAnimation(timestamp) {
-            if (timestamp - start >= delay) {
-                updateColorMap();
-                start = timestamp;
-            }
-
-            requestAnimationFrame(startAnimation);
+        function arrayToColor(arr) {
+            return p.color(arr[0] * 255, arr[1] * 255, arr[2] * 255);
         }
 
-        startAnimation(performance.now());
+        function lerpArrays(arrayA, arrayB, t) {
+            const newArray = [];
+            for (let i = 0; i < arrayA.length; i++) {
+                newArray.push(arrayA[i] * (1 - t) + arrayB[i] * t);
+            }
+            return newArray;
+        }
 
+        // Sample the color interpolating 4 cells around the specified point
+        function sampleMap(map, sx, sy) {
+            const ix0 = smallerIndex(sx);
+            const ix1 = largerIndex(sx);
+            const iy0 = smallerIndex(sy);
+            const iy1 = largerIndex(sy);
+            const tx = sx - Math.floor(sx);
+            const ty = sy - Math.floor(sy);
+            const mixA = lerpArrays(map[iy0][ix0], map[iy0][ix1], tx);
+            const mixB = lerpArrays(map[iy1][ix0], map[iy1][ix1], tx);
+            const mix = lerpArrays(mixA, mixB, ty);
+            return mix;
+        }
+
+        function wrap(n) {
+            return (n + mapResolution) % mapResolution;
+        }
+
+        function smallerIndex(n) {
+            return Math.floor(n + mapResolution) % mapResolution;
+        }
+
+        function largerIndex(n) {
+            return Math.ceil(n + mapResolution) % mapResolution;
+        }
+
+        function initialize() {
+            // Use array fill and map meth9ods for cleaner map initialization
+            colorMap =
+                Array(mapResolution).fill().map((_, y) =>
+                    Array(mapResolution).fill().map((_, x) => [
+                        x < mapResolution / 2 ? 0 : 1,
+                        y < mapResolution / 2 ? 0 : 1,
+                        1
+                    ])
+                );
+
+            velocityMap =
+                Array(mapResolution).fill().map((_, y) =>
+                    Array(mapResolution).fill().map((_, x) => [
+                        y < mapResolution / 2 ? 0.5 : -0.5,
+                        x < mapResolution / 2 ? -0.5 : 0.5
+                    ])
+                );
+        }
+
+        function drawArrow(x0, y0, x1, y1) {
+            const headSize = 3;
+            p.line(x0, y0, x1, y1);
+            let v = p.createVector(x1 - x0, y1 - y0).normalize();
+            p.line(x1, y1, x1 - v.y * headSize - v.x * headSize, y1 + v.x * headSize - v.y * headSize);
+            p.line(x1, y1, x1 + v.y * headSize - v.x * headSize, y1 - v.x * headSize - v.y * headSize);
+        }
+    };
+    let myp5 = new p5(sketch, containerRef.current);
+    return () => {
+        myp5.remove(); // This will remove the canvas and clean up the p5 sketch on component unmount
+      };
+  
     }, []);
-
+  
     return <div style={{ width: '100vw', height: '100vh' }} ref={containerRef}></div>;
-}
-
-export default Animation;
+  }
+  
+  export default Animation;
 
