@@ -19,11 +19,11 @@ function Animation() {
         let mapDisplaySize, mapResolution, gridSize;
   
         p.setup = () => {
-          p.frameRate(15);
+          p.frameRate(30);
           // Initialize canvas and map settings
           p.createCanvas(p.windowWidth, p.windowHeight);
           mapDisplaySize = Math.min(p.width, p.height);
-          mapResolution = 20;
+          mapResolution = 100;
           gridSize = mapDisplaySize / mapResolution;
   
           initialize();
@@ -31,6 +31,15 @@ function Animation() {
   
         p.mousePressed = () => {
           initialize();
+        };
+
+        p.windowResized = () => {
+            // Update canvas size
+            p.resizeCanvas(p.windowWidth, p.windowHeight);
+            
+            // Update any other properties that depend on canvas size
+            mapDisplaySize = Math.min(p.width, p.height);
+            gridSize = mapDisplaySize / mapResolution;
         };
   
         p.draw = () => {
@@ -121,8 +130,8 @@ function Animation() {
             colorMap =
                 Array(mapResolution).fill().map((_, y) =>
                     Array(mapResolution).fill().map((_, x) => [
-                        x < mapResolution / 2 ? 0 : 1,
-                        y < mapResolution / 2 ? 0 : 1,
+                        x < mapResolution / 2 ? -0.5*Math.random() : Math.random() ,
+                        y < mapResolution / 2 ? 0.5*Math.random() : Math.random(),
                         1
                     ])
                 );
@@ -130,8 +139,8 @@ function Animation() {
             velocityMap =
                 Array(mapResolution).fill().map((_, y) =>
                     Array(mapResolution).fill().map((_, x) => [
-                        y < mapResolution / 2 ? 0.5 : -0.5,
-                        x < mapResolution / 2 ? -0.5 : 0.5
+                        y < mapResolution / 2 ? 2*Math.random() : -2*Math.random(),
+                        x < mapResolution / 2 ? 2*Math.random() : -2*Math.random()
                     ])
                 );
         }
