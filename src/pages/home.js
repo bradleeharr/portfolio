@@ -12,35 +12,27 @@ const Intro = () => {
     
     return (
 
-    <div className="intro"> 
 
 
-<button onClick={() => navigate(-1)} className="back-button">← Back</button> {/* Added Back Button */}
-
-<section className="profile-card">
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12">
+<div> 
+<section className="intro">
+    <button onClick={() => navigate(-1)} className="back-button">← Back</button> 
+    <div className="hero">
           <div className="continer centerIt">
-          <h2><em>Hello, </em> I'm Bradlee Harrison. This is my site. </h2>  
-          {//<img src={profileImg} alt="Bradlee Harrison" />
-}
+          <h1>Hello, I'm Bradlee Harrison. This is my site. </h1>  
+          {/* <img src={profileImg} alt="Bradlee Harrison" /> */}
               <p class="scroll-to-section">I study electrical and computer engineering. I have interests in
                Signal Processing of Radar/Communications, Information Theory, Embedded Systems, and Machine Learning.
-               I am pursuing a master's in Electrical and Computer Engineering at the University of Oklahoma's Advanced Radar Research Center, planning to graduate Dec 2023.
-               </p>
-          </div>
-        </div> 
-      </div>
+               I am pursuing a master's in Electrical and Computer Engineering at the University of Oklahoma's Advanced
+                Radar Research Center, planning to graduate in 2024. </p>
+        </div>
     </div>
 </section>
 
         
 
         <div className="content-grid">
-            
             <div className="skills-contact-section">
-                
                 <div className="skills-section">
                     <h2>My Skills and Tools</h2>
                     {/*Click for a list of projects with respect to each skill! */}
@@ -68,25 +60,22 @@ const Intro = () => {
                     <a href="/fluid">Fluid Sim</a>
                 </div>
 
-                <section className="contact">
-        <div className="contact-section">
-            <h2>Contact Me</h2>
-            <div className="navigation">
-        <div className="social-links centerIt">
-                <a href="https://github.com/bradleeharr"><i className="fa fa-github"></i>  GitHub</a>
-                <a href="https://linkedin.com/in/bradlee-harrison"><i className="fa fa-linkedin"></i> LinkedIn</a>
+        <section className="contact">
+            <div className="contact-section">
+                <h2>Contact Me</h2>
+                <div className="navigation">
+                    <div className="social-links centerIt">
+                            <a href="https://github.com/bradleeharr"><i className="fa fa-github"></i>  GitHub</a>
+                            <a href="https://linkedin.com/in/bradlee-harrison"><i className="fa fa-linkedin"></i> LinkedIn</a>
+                        </div>
+                </div>
+                <form action="https://formspree.io/f/mqkvkjgj" method="post">
+                    <input input name="name" type="text" class="form-control" id="name" placeholder="Your Name" />
+                    <input input name="email" type="email" class="form-control" placeholder="Your Email" />
+                    <input input name="message" type="text" class="form-control" placeholder="Your Message"/>
+                    <button type="submit">Send Message</button>
+                </form>
             </div>
-            {/*<a href="#blog">Blog</a>
-            <a href="#projects">Projects</a> 
-            <button onClick={toggleTheme}> Toggle Dark Mode </button> */}
-        </div>
-            <form action="https://formspree.io/f/mqkvkjgj" method="post">
-                <input input name="name" type="text" class="form-control" id="name" placeholder="Your Name" />
-                <input input name="email" type="email" class="form-control" placeholder="Your Email" />
-                <input input name="message" type="text" class="form-control" placeholder="Your Message"/>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
         </section>
             </div>
             
@@ -125,15 +114,7 @@ const Intro = () => {
 
            
         </div>
-        
-
-    <footer>
-            
-    </footer>
-
-
 </div>
-
  
   );
 };
