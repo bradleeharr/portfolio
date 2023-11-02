@@ -6,9 +6,7 @@ body {
   flex-direction: column;
   align-items: center; /* Center children horizontally */
   font-family: 'Open Sans', sans-serif; /* Primary font */
-  background: #f4f4f4; /* Light background color */
   color: #333;
-  background: blue;
   background-size: cover;
   background-attachment: local; 
   background-repeat: no-repeat;
@@ -21,7 +19,7 @@ h1, h2, h3 {
   padding: 60px 0;
   text-align: center;
   color: white;
-  background: linear-gradient(90deg, #1c92d2, #f2fcfe); /* Gradient background */
+  background: linear-gradient(135deg, cyan, orange); /* Gradient background */
 
 }
 .hero h1 {
@@ -89,8 +87,9 @@ form button:hover {
 
 /* Skills and Contact Sections */
 .skills-contact-section {
-  flex-basis: calc(30% - 20px); /* Adjust the width calculation based on spacing */
-  margin-right: 20px; /* Add some margin between the columns */
+  flex-basis: calc(30%); /* Adjust the width calculation based on spacing */
+  margin-right: 10px; /* Add some margin between the columns */
+  margin-left: 10px;
 }
 
 .skills-section {
@@ -102,7 +101,7 @@ form button:hover {
 /* Short Notes Section */
 .latest-posts {
   flex-grow: 1; /* Allow this section to grow and fill available space */
-  flex-basis: calc(70% - 20px); /* Adjust the width calculation based on your spacing */
+  flex-basis: calc(70%); /* Adjust the width calculation based on your spacing */
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
   background-color: #ffffff; /* Optional: Add a background color */

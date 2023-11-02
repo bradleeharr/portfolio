@@ -21,10 +21,6 @@ const Intro = () => {
           <div className="continer centerIt">
           <h1>Hello, I'm Bradlee Harrison. This is my site. </h1>  
           {/* <img src={profileImg} alt="Bradlee Harrison" /> */}
-              <p class="scroll-to-section">I study electrical and computer engineering. I have interests in
-               Signal Processing of Radar/Communications, Information Theory, Embedded Systems, and Machine Learning.
-               I am pursuing a master's in Electrical and Computer Engineering at the University of Oklahoma's Advanced
-                Radar Research Center, planning to graduate in 2024. </p>
         </div>
     </div>
 </section>
@@ -57,8 +53,8 @@ const Intro = () => {
                         <li>CSS</li>
                         <li>JS</li>
                     </ul>
-                    <a href="/fluid">Fluid Sim</a>
                 </div>
+                <a href="/fluid">Fluid Sim</a>
 
         <section className="contact">
             <div className="contact-section">
@@ -80,7 +76,7 @@ const Intro = () => {
             </div>
             
             <div className="latest-posts">
-                <a href="/blog/">
+                {/* <a href="/blog/"> */}
                 <h2>Short Notes</h2>
                 <a href="/blog/my-first-blog-post/#">
                     <div className="post-card">
@@ -102,11 +98,7 @@ const Intro = () => {
                     <p>A list of FPGA Resources for learning and practicing Verilog, VHDL, and understanding digital FPGA synthesis...</p>
                 </div> 
         </a>
-        </a>
-        
             </div>
-
-           
         </div>
 </div>
  

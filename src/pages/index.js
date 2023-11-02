@@ -35,8 +35,8 @@ const Index = () => {
     <div id="title"></div>
         <div className="video-overlay header-text">
             <div className="caption">
+            <h1  style={{ color: 'orange' }}>Bradlee Harrison</h1>
                 <h6>Electrical and Computer Engineering</h6>
-                <h2><em>Bradlee</em> Harrison</h2>
                 <div className="main-button">
                     <a href="/home">See more</a>
                 </div>
