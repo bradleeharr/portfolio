@@ -1,81 +1,84 @@
-.blog-listing {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+/* Ensure the body is using flex display to properly align children */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center children horizontally */
+}
+
+/* Back Button */
+.back-button {
+  position: absolute; /* Fix the position on the screen */
+  top: 20px;
+  left: 20px;
+  background-color: #f7f7f7; /* Light background for the button */
+  color: #007acc; /* Theme color for the text */
+  border: 1px solid #ddd; /* Subtle border */
+}
+
+/* Skills and Notes Section */
+.content-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Skills and Contact Sections */
+.skills-contact-section {
+  flex-basis: calc(50% - 20px); /* Adjust the width calculation based on spacing */
+  margin-right: 20px; /* Add some margin between the columns */
+}
+
+.skills-section {
+  margin-bottom: 20px; /* Provide spacing between this section and the contact section */
+  max-height: 500px; /* Set a maximum height */
+  overflow-y: auto; /* Allow scrolling for overflow */
+}
+
+.latest-posts {
+  flex-grow: 1; /* Allow this section to grow and fill available space */
+  flex-basis: calc(50% - 20px); /* Adjust the width calculation based on spacing */
+}
+
+/* Contact Section */
+.contact-section {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+.social-links {
+  display: flex;
+  justify-content: center; /* Center social links */
+  gap: 20px; /* Space between items */
+}
+
+.social-links a {
+  display: flex;
+  align-items: center; /* Center text and icon vertically */
+  gap: 10px; /* Space between icon and text */
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between form fields */
+}
+
+/* Footer */
+footer {
+  margin-top: auto; /* Push the footer to the bottom */
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .content-grid {
+    flex-direction: column; /* Stack sections vertically on smaller screens */
   }
-  
-  .blog-listing h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .blog-listing ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .blog-listing li {
-    margin-bottom: 10px;
-    font-size: 20px;
-    background-color: #fff;
-  }
-  
-  .blog-listing a {
-    text-decoration: none;
-    color: #007acc;
-    font-weight: 600;
-    transition: color 0.2s;
-  }
-  
-  .blog-listing a:hover {
-    color: #004a7c;
-  }
-  
-  .blog-listing ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .blog-listing li {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-  }
-  
-  .blog-listing li:hover {
-    background-color: #f7f7f7;
-  }
-  
-  .blog-listing a {
-    text-decoration: none;
-    color: #007acc;
-    font-weight: 600;
-  }
-  
-  .blog-listing a:hover {
-    color: #004a7c;
-    text-decoration: underline;
-  }
-  
+
   .back-button {
-    background-color: #007acc;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 10px 0;
-    font-weight: 600;
-    transition: all 0.2s;
+    position: static; /* Reset positioning on mobile */
+    margin-bottom: 20px; /* Provide spacing */
   }
-  
-  .back-button:hover {
-    background-color: #004a7c;
-    transform: scale(1.05); 
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2); 
-  }
+}

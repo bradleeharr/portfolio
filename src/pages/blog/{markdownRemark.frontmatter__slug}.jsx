@@ -45,7 +45,7 @@ return (
         )*/}
         
         <Link to="../../">
-        <div className="nav-button home-button">
+        <div className="nav-button home-button back-button">
         Home
         </div>
         </Link>
