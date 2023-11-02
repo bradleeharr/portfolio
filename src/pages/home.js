@@ -15,67 +15,61 @@ const Intro = () => {
 
 
 <div> 
-<section className="intro">
-    <button onClick={() => navigate(-1)} className="back-button absolute">← Back</button> 
-    <div className="hero">
-          <div className="continer centerIt">
-          <h1>Hello, I'm Bradlee Harrison. This is my site. </h1>  
-          {/* <img src={profileImg} alt="Bradlee Harrison" /> */}
+    <section className="intro">
+        <button onClick={() => navigate(-1)} className="back-button absolute">← Back</button> 
+        <div className="hero">
+            <div className="continer centerIt">
+            <h1>Hello, I'm Bradlee Harrison. This is my site. </h1>  
+            {/* <img src={profileImg} alt="Bradlee Harrison" /> */}
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
         
 
-        <div className="content-grid">
-            <div className="skills-contact-section">
-                <div className="skills-section">
-                    <h2>My Skills and Tools</h2>
-                    {/*Click for a list of projects with respect to each skill! */}
-                    <ul>
-
-                        <li>Python</li>
-                        <li>C/C++</li>
-                        <li>Pytorch</li>
-                        <li>Software Defined Radio</li>
-                        <li>C#/.NET</li>
-                        <li>Java</li>
-                        <li>MATLAB</li>
-                        <li>React</li>
-                        <li>Node.js</li>
-                        <li>TensorFlow</li>
-                        <li>FPGAs</li>
-                        <li>Microcontrollers</li>
-                        <li>Verilog</li>
-                        <li>GNU Radio</li>
-                        <li>Gatsby</li>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JS</li>
-                    </ul>
+    <div className="content-grid">
+        <div className="skills-section">
+            <h2>My Skills and Tools</h2>
+            {/*Click for a list of projects with respect to each skill! */}
+            <ul>
+                <li>Python</li>
+                <li>C/C++</li>
+                <li>Pytorch</li>
+                <li>Software Defined Radio</li>
+                <li>C#/.NET</li>
+                <li>Java</li>
+                <li>MATLAB</li>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>TensorFlow</li>
+                <li>FPGAs</li>
+                <li>Microcontrollers</li>
+                <li>Verilog</li>
+                <li>GNU Radio</li>
+                <li>Gatsby</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JS</li>
+            </ul>
+        </div>            
+        <div className="contact-section">
+            <h2>Contact Me</h2>
+            <div className="navigation">
+                <div className="social-links centerIt">
+                        <a href="https://github.com/bradleeharr"><i className="fa fa-github"></i>  GitHub</a>
+                        <a href="https://linkedin.com/in/bradlee-harrison"><i className="fa fa-linkedin"></i> LinkedIn</a>
                 </div>
-                <a href="/fluid">Fluid Sim</a>
+            </div>
+            <form action="https://formspree.io/f/mqkvkjgj" method="post">
+                <input input name="name" type="text" class="form-control" id="name" placeholder="Your Name" />
+                <input input name="email" type="email" class="form-control" placeholder="Your Email" />
+                <input input name="message" type="text" class="form-control" placeholder="Your Message"/>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
 
-        <section className="contact">
-            <div className="contact-section">
-                <h2>Contact Me</h2>
-                <div className="navigation">
-                    <div className="social-links centerIt">
-                            <a href="https://github.com/bradleeharr"><i className="fa fa-github"></i>  GitHub</a>
-                            <a href="https://linkedin.com/in/bradlee-harrison"><i className="fa fa-linkedin"></i> LinkedIn</a>
-                        </div>
-                </div>
-                <form action="https://formspree.io/f/mqkvkjgj" method="post">
-                    <input input name="name" type="text" class="form-control" id="name" placeholder="Your Name" />
-                    <input input name="email" type="email" class="form-control" placeholder="Your Email" />
-                    <input input name="message" type="text" class="form-control" placeholder="Your Message"/>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </section>
-            </div>
-            
-            <div className="latest-posts">
+
+        <div className="latest-posts">
                 {/* <a href="/blog/"> */}
                 <h2>Short Notes</h2>
                 <a href="/blog/my-first-blog-post/#">
@@ -97,9 +91,10 @@ const Intro = () => {
                     <p> December 12, 2022 </p>
                     <p>A list of FPGA Resources for learning and practicing Verilog, VHDL, and understanding digital FPGA synthesis...</p>
                 </div> 
-        </a>
-            </div>
+                </a>
+                <a href="/fluid">Fluid Sim</a>
         </div>
+    </div>
 </div>
  
   );
