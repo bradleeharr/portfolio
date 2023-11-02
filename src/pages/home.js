@@ -16,7 +16,7 @@ const Intro = () => {
 
 <div> 
 <section className="intro">
-    <button onClick={() => navigate(-1)} className="back-button">← Back</button> 
+    <button onClick={() => navigate(-1)} className="back-button absolute">← Back</button> 
     <div className="hero">
           <div className="continer centerIt">
           <h1>Hello, I'm Bradlee Harrison. This is my site. </h1>  
@@ -80,21 +80,15 @@ const Intro = () => {
             </div>
             
             <div className="latest-posts">
-                {/*<a href="/blog/">*/}
+                <a href="/blog/">
                 <h2>Short Notes</h2>
-                <a href="/blog/l-m-hdpc/#"><div className="post-card">
-                    <h3>Low Density Parity Check Codes</h3>
-                    <p> 2022-2023 </p>
-                    <p>Some sources on Low Density Parity Check Codes...</p>
-                </div></a> 
                 <a href="/blog/my-first-blog-post/#">
                     <div className="post-card">
                         <h3>Gatsby and Katex</h3>
                         <p> August 25, 2023 </p>
                         <p>Using Markdown to create posts with LaTeX format supported...</p>
                     </div>
-                {//</a>
-                }
+                </a>
                 <a href="/blog/ann-chess/#">
                 <div className="post-card">
                     <h3>Artificial Neural Networks for Chess</h3>
@@ -104,7 +98,7 @@ const Intro = () => {
                 </a>
                 <a href="/blog/fpga-resources/#"><div className="post-card">
                     <h3>FPGA Resources</h3>
-                    <p> 2022-2023 </p>
+                    <p> December 12, 2022 </p>
                     <p>A list of FPGA Resources for learning and practicing Verilog, VHDL, and understanding digital FPGA synthesis...</p>
                 </div> 
         </a>

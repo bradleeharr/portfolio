@@ -12,9 +12,11 @@ const BlogListing = ({ data }) => {
       <ul>
         {posts.map(post => (
         <Link to={`/blog/${post.node.frontmatter.slug}`}>
+          <button className = "nav-button">
           <li key={post.node.frontmatter.slug}>
               {post.node.frontmatter.title}
           </li>
+          </button> <br/>
           </Link>
 
         ))}

@@ -8,16 +8,21 @@ body {
   font-family: 'Open Sans', sans-serif; /* Primary font */
   background: #f4f4f4; /* Light background color */
   color: #333;
+  background: blue;
+  background-size: cover;
+  background-attachment: local; 
+  background-repeat: no-repeat;
 }
 h1, h2, h3 {
   font-family: 'Roboto', sans-serif; /* Secondary font for headings */
 }
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #1c92d2, #f2fcfe); /* Gradient background */
   padding: 60px 0;
   text-align: center;
   color: white;
+  background: linear-gradient(90deg, #1c92d2, #f2fcfe); /* Gradient background */
+
 }
 .hero h1 {
   font-size: 3rem; /* Large font size for the hero title */
@@ -40,7 +45,6 @@ post-card:hover {
 .nav-button, .social-links a {
   background: #007acc; /* Theme color */
   color: white;
-  padding: 15px 30px;
   border-radius: 5px;
   transition: background 0.3s;
 }
@@ -66,12 +70,11 @@ form button:hover {
   background: #005a9c;
 }
 
-
+.absolute {
+  position: absolute;
+}
 /* Back Button */
 .back-button {
-  position: absolute; /* Fix the position on the screen */
-  top: 20px;
-  left: 20px;
   background-color: #f7f7f7; /* Light background for the button */
   color: #007acc; /* Theme color for the text */
   border: 1px solid #ddd; /* Subtle border */
@@ -86,7 +89,7 @@ form button:hover {
 
 /* Skills and Contact Sections */
 .skills-contact-section {
-  flex-basis: calc(50% - 20px); /* Adjust the width calculation based on spacing */
+  flex-basis: calc(30% - 20px); /* Adjust the width calculation based on spacing */
   margin-right: 20px; /* Add some margin between the columns */
 }
 
@@ -96,11 +99,14 @@ form button:hover {
   overflow-y: auto; /* Allow scrolling for overflow */
 }
 
+/* Short Notes Section */
 .latest-posts {
   flex-grow: 1; /* Allow this section to grow and fill available space */
-  flex-basis: calc(50% - 20px); /* Adjust the width calculation based on spacing */
+  flex-basis: calc(70% - 20px); /* Adjust the width calculation based on your spacing */
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+  background-color: #ffffff; /* Optional: Add a background color */
 }
-
 /* Contact Section */
 .contact-section {
   display: flex;
@@ -184,14 +190,6 @@ footer {
     margin-top: -50px; /* Pull the content grid up to overlap the hero section */
 }
 
-
-.latest-posts {
-    flex: 1;
-    max-width: calc(50% - 10px);
-}
-
-
-
 .social-links a {
     padding: 10px 15px;
     border: 1px solid #ddd;
@@ -208,15 +206,11 @@ footer {
 }
 /* Back Button Styling */
 .back-button {
-  position: fixed;
-  top: 20px;
-  left: 20px;
   background-color: #007acc;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
-  z-index: 1000; /* Ensure it's above other elements */
 }
 
 .back-button:hover {
