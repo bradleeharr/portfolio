@@ -22,12 +22,12 @@ Now, smoothly and surely, I can add equations to markdown and implement them as 
 
 # Example:
 >__Inline Equation__:
->...a ratio between $Q$, the radius, $a$, of a sphere enclosing, and the wavenumber $k$. The equation amounts to $Q = \frac{1}{(ka)^3} + \frac{1}{ka}$
+>An equation can look like $e^{2\pi i} = 1$
 > > Wrap a statement in a single '$' in order to create an inline equation.
 
 > >```
-> >...a ratio between $Q$, the radius, $a$, of a sphere enclosing, and the wavenumber $k$.
-> >The equation amounts to $Q = \frac{1}{(ka)^3} + \frac{1}{ka}$
+> >An equation can look like $e^{2*\pi*i} = 1$
+> >
 > > ```
 
 >__Block equation__:

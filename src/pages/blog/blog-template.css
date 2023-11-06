@@ -104,4 +104,10 @@ ul ul, ul ol, ol ul, ol ol {
   ul, ol {
     padding-left: 20px; /* Smaller padding for lists on mobile */
   }
+  .blog-layout {
+    max-width: 700px;
+  }
+  body {
+    overflow-wrap: break-word;
+  }
 }
